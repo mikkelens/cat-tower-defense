@@ -1,0 +1,3 @@
+[submodule "Assets/Scripts/Tools"]
+	path = Assets/Scripts/Tools
+	url = https://github.com/mikkelens/unity-script-tools

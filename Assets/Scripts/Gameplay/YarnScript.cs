@@ -4,10 +4,10 @@ using Sirenix.OdinInspector;
 using Tools.Utils;
 using UnityEngine;
 
-namespace Scripts
+namespace Scripts.Gameplay
 {
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-	public class BalloonScript : MonoBehaviour
+	public class YarnScript : MonoBehaviour
 	{
 		[Header("Gameplay")]
 		[SerializeField, Min(0f)] private float speed = 1.2f;
@@ -17,23 +17,26 @@ namespace Scripts
 		[SerializeField] private float deathDestroyDelay = 0.5f;
 		[SerializeField, Required] private Sprite deathSprite;
 
-		[ShowInInspector, ReadOnly] private List<Transform> _targets;
+		[ShowInInspector, ReadOnly] private List<Transform> _pathTargets;
 		public void Init(List<Transform> targets)
 		{
 			_health = health;
-			_targets = targets;
+			_pathTargets = targets;
 			StartCoroutine(PathFollowRoutine());
 		}
 
 		private int _health;
-		public int Damage(int amount = 1)
+		public int Damage(int incomingDamage)
 		{
-			_health -= amount;
-			if (_health <= 0)
+			if (_health == 0) { Debug.LogWarning("Damaged entity without any health!"); return 0;}
+
+			int dealtDamage = Mathf.Min(incomingDamage, _health); // can never deal more incomingDamage than maximum
+			_health -= dealtDamage;
+			if (_health == 0)
 			{
 				Kill();
 			}
-			return Mathf.Min(_health, 0); // will return damage that was not used
+			return dealtDamage; // will return the incomingDamage that was actually dealt
 		}
 
 		private SpriteRenderer _spriteRenderer;
@@ -55,19 +58,19 @@ namespace Scripts
 		private Rigidbody2D RB => _rb ??= GetComponent<Rigidbody2D>();
 		private Rigidbody2D _rb;
 
-		// show for debugging purposes
-		[ShowInInspector, ReadOnly] private Vector2 _targetPos;
-
 		private IEnumerator PathFollowRoutine()
 		{
-			foreach (Transform target in _targets)
+			foreach (Transform pathTarget in _pathTargets)
 			{
-				_targetPos = target.position.V2FromV3();
+				Vector2 targetPos = pathTarget.position.V2FromV3();
+				Vector2 targetDir = (targetPos - transform.position.V2FromV3()).normalized;
+				Vector2 awayDir = -targetDir;
+				transform.rotation = Quaternion.FromToRotation(Vector3.up, awayDir.V3FromV2()); // look away from direction, assuming default sprite dir is down (away from up)
 				const float minDistance = 0.0001f;
-				while (Vector2.Distance(RB.position, _targetPos) > minDistance)
+				while (Vector2.Distance(RB.position, targetPos) > minDistance)
 				{
 					float deltaTime = Time.deltaTime;
-					Vector2 newPos = Vector2.MoveTowards(RB.position, _targetPos, speed * deltaTime);
+					Vector2 newPos = Vector2.MoveTowards(RB.position, targetPos, speed * deltaTime);
 					RB.MovePosition(newPos);
 					yield return new WaitForSeconds(deltaTime); // waits one frame: https://forum.unity.com/threads/coroutine-wait-x-frames-not-seconds.550168/
 				}

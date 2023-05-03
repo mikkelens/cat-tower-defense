@@ -8,13 +8,13 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Scripts
+namespace Scripts.Gameplay
 {
-	public class BalloonManager : Singleton<BalloonManager>
+	public class YarnManager : Singleton<YarnManager>
 	{
 		#region fields/settings
 		[SerializeField, Required] private Transform spawnParent;
-		[SerializeField] private List<BalloonSpawnEvent> spawnEvents = new List<BalloonSpawnEvent>();
+		[SerializeField] private List<YarnSpawnEvent> spawnEvents = new List<YarnSpawnEvent>();
 		[Space]
 		[SerializeField] private List<Transform> transformPath = new List<Transform>();
 		#endregion
@@ -30,7 +30,7 @@ namespace Scripts
 
 		private IEnumerator SpawnRoutine()
 		{
-			foreach (BalloonSpawnEvent spawnEvent in spawnEvents)
+			foreach (YarnSpawnEvent spawnEvent in spawnEvents)
 			{
 				// delay some amount
 				if (spawnEvent.eventStartDelay > 0f)
@@ -41,8 +41,8 @@ namespace Scripts
 				// spawn all the balloons for this event
 				for (int c = 0; c < spawnEvent.count; c++)
 				{
-					BalloonScript spawnedBalloon = Instantiate(spawnEvent.balloonPrefab, transformPath.First().position.WithZ(0f), Quaternion.identity, spawnParent);
-					spawnedBalloon.Init(transformPath);
+					YarnScript spawnedYarn = Instantiate(spawnEvent.yarnPrefab, transformPath.First().position.WithZ(0f), Quaternion.identity, spawnParent);
+					spawnedYarn.Init(transformPath);
 
 					// delay next spawn in event by some amount
 					if (spawnEvent.delayBetweenSpawns > 0f)

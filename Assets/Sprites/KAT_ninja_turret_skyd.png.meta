@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -71,7 +71,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -119,11 +119,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KAT_ninja_turret_skyd_0
+      name: ninja
       rect:
         serializedVersion: 2
-        x: 128
-        y: 167
+        x: 129
+        y: 168
         width: 260
         height: 227
       alignment: 0
@@ -140,7 +140,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KAT_ninja_turret_skyd_1
+      name: shuriken
       rect:
         serializedVersion: 2
         x: 35
@@ -171,10 +171,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      KAT_ninja_turret_skyd_0: 75266496
-      KAT_ninja_turret_skyd_1: 263052880
       KAT_ninja_turret_skyd_2: 1931486762
       KAT_ninja_turret_skyd_3: 1285431417
+      ninja: 75266496
+      shuriken: 263052880
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

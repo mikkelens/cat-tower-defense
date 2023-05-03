@@ -1,16 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Sirenix.OdinInspector;
+using Tools.Types;
+using Tools.Utils;
 using UnityEngine;
 
-namespace Scripts
+namespace Scripts.Gameplay
 {
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 	public class ProjectileScript : MonoBehaviour
 	{
 		[Header("Gameplay")]
-		[SerializeField] private int damageAmount;
+		[SerializeField, Min(1)] private int damageAmount = 3;
+		[ShowIf("@damageAmount > 1")]
+		[SerializeField] private Optional<int> maxDamagePerHit = new Optional<int>(2);
 		[SerializeField] private bool canContinueAfterHit = true;
 		[SerializeField] private float speed = 4f;
+		[SerializeField] private Optional<float> maxLifetime = new Optional<float>(3f, true);
 
 		[Header("Visuals")]
 		[SerializeField] private float deathDestroyDelay = 0.33f;
@@ -38,19 +44,33 @@ namespace Scripts
 
 			_speed = speed;
 			RB.velocity = _direction * speed;
+
+			_alive = true;
+			_initTime = Time.time;
+		}
+
+		private bool _alive;
+		private float _initTime;
+
+		private void Update()
+		{
+			if (_alive && (Camera.main.PointOutsideViewArea2D(transform.position.V2FromV3(), 2f)
+			               || (maxLifetime.Enabled && _initTime.TimeSince() > maxLifetime.Value)))
+			{
+				KillProjectile();
+			}
 		}
 
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
-			BalloonScript balloon = collision.collider.GetComponent<BalloonScript>();
-			if (balloon == null) return;
+			if (!_alive) return;
+			YarnScript yarn = collision.collider.GetComponent<YarnScript>();
+			if (yarn == null) return;
 
-			int spareDamage = balloon.Damage(_remainingDamage);
-			if (canContinueAfterHit && spareDamage > 0)
-			{
-				_remainingDamage = spareDamage;
-			}
-			else
+			int cappedDamage = maxDamagePerHit.Enabled ? Mathf.Min(_remainingDamage, maxDamagePerHit.Value) : _remainingDamage;
+			int dealtDamage = yarn.Damage(cappedDamage);
+			_remainingDamage -= dealtDamage;
+			if (!canContinueAfterHit || _remainingDamage < 1)
 			{
 				KillProjectile();
 			}
@@ -58,6 +78,7 @@ namespace Scripts
 
 		private void KillProjectile()
 		{
+			_alive = false;
 			Col.enabled = false;
 			RB.constraints = RigidbodyConstraints2D.FreezeAll;
 			SP.sprite = deathSprite;

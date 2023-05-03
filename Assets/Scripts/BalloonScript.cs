@@ -24,6 +24,14 @@ namespace Scripts
 
 		}
 
+		private SpriteRenderer _spriteRenderer;
+
+		private void Kill()
+		{
+			StopAllCoroutines();
+
+		}
+
 		private Rigidbody2D RB => _rb ??= GetComponent<Rigidbody2D>();
 		private Rigidbody2D _rb;
 

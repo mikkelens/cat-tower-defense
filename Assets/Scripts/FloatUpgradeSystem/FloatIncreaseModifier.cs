@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using Tools.Types;
 using UnityEngine;
 
-namespace Scripts.Systems
+namespace Scripts.FloatUpgradeSystem
 {
 	[Serializable]
 	public class FloatIncreaseModifier

@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Scripts.Systems
+namespace Scripts.FloatUpgradeSystem
 {
 	[Serializable]
 	public class IncreaseableFloat

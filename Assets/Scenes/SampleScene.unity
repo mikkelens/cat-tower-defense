@@ -638,6 +638,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: level
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: range.<Upgrades>k__BackingField.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: range.<Upgrades>k__BackingField.Array.data[0].value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: range.<Upgrades>k__BackingField.Array.data[1].value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: range.<Upgrades>k__BackingField.Array.data[0].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: range.<Upgrades>k__BackingField.Array.data[1].enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3130352600553055199, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9990483

@@ -2,9 +2,9 @@
     "name": "Scripts",
     "rootNamespace": "",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:441e81d7445ccb642ad0143c0089ba80",
-        "GUID:848fae7df53c3624bb0b0503b6972f78"
+        "Unity.InputSystem",
+        "Types",
+        "Utils"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

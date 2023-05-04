@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using JetBrains.Annotations;
+using Scripts.Systems;
 using Sirenix.OdinInspector;
 using Tools.Utils;
 using UnityEngine;
@@ -9,26 +10,43 @@ namespace Scripts.Gameplay
 {
 	public class TowerScript : MonoBehaviour
 	{
-		[SerializeField] private float range = 2.75f;
-		[SerializeField, Min(0.01f)] private float projectilesPerSecond = 1f;
+		[Header("Tower")]
+		[SerializeField, InlineProperty] private IncreaseableFloat range = new IncreaseableFloat(2.75f);
+		[Space]
+		[SerializeField, InlineProperty] private IncreaseableFloat projectilesPerSecond = new IncreaseableFloat(1f);
+
+		[Header("Projectile")]
 		[SerializeField, AssetsOnly, Required] private ProjectileScript projectilePrefab;
 		[SerializeField, Required] private Transform projectileSourcePoint;
+
+		[HorizontalGroup("LevelGroup")]
+		[ShowInInspector, ReadOnly] private int _level; // 0 by default
+		[ButtonGroup("LevelGroup/LevelButtons"), UsedImplicitly] private void IncreaseLevel()
+		{
+			_level++;
+			projectilesPerSecond.Level = range.Level = _level;
+		}
+		[ButtonGroup("LevelGroup/LevelButtons"), UsedImplicitly] private void DecreaseLevel()
+		{
+			_level--;
+			projectilesPerSecond.Level = range.Level = _level;
+		}
 
 		private void Start()
 		{
 			StartCoroutine(SpawnRoutine());
 		}
 
+		private float ShootDelay => 1f / projectilesPerSecond.Value;
 		private IEnumerator SpawnRoutine()
 		{
-			float shootDelay = 1f / projectilesPerSecond;
 			while (true)
 			{
 				YarnScript newTarget = FindTargetInRange();
 				if (newTarget != null)
 				{
 					SpawnProjectile(newTarget);
-					yield return new WaitForSeconds(shootDelay);
+					yield return new WaitForSeconds(ShootDelay);
 				}
 				else
 				{
@@ -39,7 +57,7 @@ namespace Scripts.Gameplay
 
 		[CanBeNull] private YarnScript FindTargetInRange()
 		{
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position.V2FromV3(), range);
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position.V2FromV3(), range.Value);
 			return transform.ClosestScript(colliders
 				.Select(x => x.GetComponent<YarnScript>())
 				.Where(x => x != null));
@@ -60,7 +78,7 @@ namespace Scripts.Gameplay
 		private void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.grey;
-			Gizmos.DrawWireSphere(transform.position, range);
+			Gizmos.DrawWireSphere(transform.position, range.Value);
 		}
 	}
 }

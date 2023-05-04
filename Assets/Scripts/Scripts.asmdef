@@ -1,6 +1,6 @@
 {
     "name": "Scripts",
-    "rootNamespace": "",
+    "rootNamespace": "Scripts",
     "references": [
         "Unity.InputSystem",
         "Types",

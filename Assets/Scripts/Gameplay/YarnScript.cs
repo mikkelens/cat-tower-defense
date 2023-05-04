@@ -28,7 +28,7 @@ namespace Scripts.Gameplay
 		private int _health;
 		public int Damage(int incomingDamage)
 		{
-			if (_health == 0) { Debug.LogWarning("Damaged entity without any health!"); return 0;}
+			if (_health == 0) return 0; // projectile can hit a dead thing if 2 projectiles hit it on the same physics update
 
 			int dealtDamage = Mathf.Min(incomingDamage, _health); // can never deal more incomingDamage than maximum
 			_health -= dealtDamage;

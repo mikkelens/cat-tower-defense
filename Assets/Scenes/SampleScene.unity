@@ -432,6 +432,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &632484356 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5698316794912575754, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+  m_PrefabInstance: {fileID: 1994040824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &783115098
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +648,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: stats.spriteRenderer
+      value: 
+      objectReference: {fileID: 632484356}
+    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: range.<Upgrades>k__BackingField.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -721,6 +730,18 @@ PrefabInstance:
     - target: {fileID: 4128899418769348701, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_Name
       value: Ninja
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698316794912575754, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698316794912575754, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698316794912575754, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

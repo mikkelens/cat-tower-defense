@@ -5,10 +5,10 @@ using Tools.Types;
 using Tools.Utils;
 using UnityEngine;
 
-namespace Scripts.TowerUpgradeSystem
+namespace Scripts.Towers.Old
 {
 	[Serializable]
-	public struct TowerStat<T>
+	public struct SimpleLeveledStat<T>
 	{
 		[field: SerializeField] public T BaseValue { get; private set; }
 
@@ -16,7 +16,7 @@ namespace Scripts.TowerUpgradeSystem
 		public List<Optional<T>> Upgrades { get; private set; }
 		// optional because a level can have an upgrade that doesn't change anything
 
-		public TowerStat(T value)
+		public SimpleLeveledStat(T value)
 		{
 			BaseValue = value;
 			_prevValue = value;
@@ -37,8 +37,6 @@ namespace Scripts.TowerUpgradeSystem
 				_prevValue = value;
 			}
 		}
-
-
 		private int _level;
 		public int Level
 		{

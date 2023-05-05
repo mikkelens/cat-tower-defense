@@ -85,6 +85,10 @@ PrefabInstance:
       value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.level
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 8375398830376871439, guid: 00859e142288a3f4b9c89dfc85614268, type: 3}
@@ -93,11 +97,143 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: projectilesPerSecond.modifier.levelStackModifier
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: projectilesPerSecond.modifier.levelStackModifier.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<BaseStats>k__BackingField.<Sprite>k__BackingField
+      value: 
+      objectReference: {fileID: 75266496, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<RangeOverride>k__BackingField.value
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<RangeOverride>k__BackingField.value
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<RangeOverride>k__BackingField.value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<RangeOverride>k__BackingField.value
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.value.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.value.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.value.g
+      value: 0.8888889
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<RangeOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.value.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.value.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.value.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.value.r
+      value: 0.5817883
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<RangeOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.value.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.value.b
+      value: 0.3537736
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.value.g
+      value: 0.3537736
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.value.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<RangeOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.value.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.value.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.value.r
+      value: 0.3386531
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<RangeOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<AttackSpeedOverride>k__BackingField.value
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<AttackSpeedOverride>k__BackingField.value
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<AttackSpeedOverride>k__BackingField.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<AttackSpeedOverride>k__BackingField.enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

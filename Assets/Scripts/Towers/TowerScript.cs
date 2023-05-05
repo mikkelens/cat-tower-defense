@@ -1,44 +1,49 @@
+using System;
 using System.Collections;
 using System.Linq;
 using JetBrains.Annotations;
-using Scripts.TowerUpgradeSystem;
+using Scripts.Gameplay;
 using Sirenix.OdinInspector;
 using Tools.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-namespace Scripts.Gameplay
+namespace Scripts.Towers
 {
+	[DisallowMultipleComponent] // ensures editor things work as expected
+	#if UNITY_EDITOR
+	[ExecuteInEditMode] // required to make undo-ing work properly for stats
+	#endif
 	public class TowerScript : MonoBehaviour
 	{
 		[Header("Tower")]
-		[SerializeField, InlineProperty] private TowerStat<float> range = new TowerStat<float>(2.1f);
-		[Space]
-		[SerializeField, InlineProperty] private TowerStat<float> fireSpeed = new TowerStat<float>(1f);
+		[SerializeField] private LeveledStats stats;
 
 		[Header("Projectile")]
 		[SerializeField, AssetsOnly, Required] private ProjectileScript projectilePrefab;
 		[SerializeField, Required] private Transform projectileSourcePoint;
 
-		[HorizontalGroup("LevelGroup")]
-		[SerializeField, ReadOnly] private int level = -1; // 0 by default
-		[ButtonGroup("LevelGroup/LevelButtons"), UsedImplicitly] private void IncreaseLevel()
+
+		#if UNITY_EDITOR
+		private void OnEnable()
 		{
-			level++;
-			fireSpeed.Level = range.Level = level;
+			Undo.undoRedoPerformed += stats.UpdateStats; // ensure undos actually refresh everything, and nicely
 		}
-		[ButtonGroup("LevelGroup/LevelButtons"), UsedImplicitly] private void DecreaseLevel()
+		private void OnDisable()
 		{
-			level--;
-			fireSpeed.Level = range.Level = level;
+			Undo.undoRedoPerformed -= stats.UpdateStats;
 		}
+		#endif
 
 		private void Start()
 		{
+			stats.Init(GetComponentInChildren<SpriteRenderer>());
 			StartCoroutine(SpawnRoutine());
 		}
 
-		private float ShootDelay => 1f / fireSpeed.UpdatedValue;
+		private float ShootDelay => 1f / stats.AttackSpeed;
 		private IEnumerator SpawnRoutine()
 		{
 			while (true)
@@ -58,7 +63,7 @@ namespace Scripts.Gameplay
 
 		[CanBeNull] private YarnScript FindTargetInRange()
 		{
-			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position.V2FromV3(), range.UpdatedValue);
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position.V2FromV3(), stats.Range);
 			return transform.ClosestScript(colliders
 				.Select(x => x.GetComponent<YarnScript>())
 				.Where(x => x != null));
@@ -79,7 +84,7 @@ namespace Scripts.Gameplay
 		private void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.grey;
-			Gizmos.DrawWireSphere(transform.position, range.UpdatedValue);
+			Gizmos.DrawWireSphere(transform.position, stats.Range);
 		}
 	}
 }

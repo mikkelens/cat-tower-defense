@@ -5,21 +5,26 @@ using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using Tools.Types;
 using Tools.Utils;
+using UnityEngine;
+using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Scripts.Towers
 {
 	[Serializable]
 	public class LeveledStats
 	{
+		public void Init(SpriteRenderer renderer)
+		{
+			spriteRenderer = renderer; // important that this happens first
+			UpdateStats();
+		}
+
 		#region <level>
-		[HorizontalGroup("LevelGroup")]
-		[PropertyOrder(-10)]
-		[SerializeField, ReadOnly] private int level; // prevent direct editing
+		[HorizontalGroup("Current/LevelGroup")]
+		[SerializeField, ReadOnly] private int level;
 		public int Level
 		{
 			get => level;
@@ -35,12 +40,12 @@ namespace Scripts.Towers
 			}
 		}
 		#if UNITY_EDITOR
-		private const int LevelButtonsWidth = 60;
+		private const int LevelButtonsWidth = 55;
 		[UsedImplicitly] private bool CanDecreaseLevel => Level > -1;
-		[HorizontalGroup("LevelGroup", Width = LevelButtonsWidth), EnableIf("CanDecreaseLevel")]
+		[HorizontalGroup("Current/LevelGroup", Width = LevelButtonsWidth), EnableIf("CanDecreaseLevel")]
 		[Button("Level--")] private void DecreaseLevel() => SetLevelInEditor(Level - 1);
 		[UsedImplicitly] private bool CanIncreaseLevel => Level < UpgradeTiers.Count - 1;
-		[HorizontalGroup("LevelGroup", Width = LevelButtonsWidth), EnableIf("CanIncreaseLevel")]
+		[HorizontalGroup("Current/LevelGroup", Width = LevelButtonsWidth), EnableIf("CanIncreaseLevel")]
 		[Button("Level++")] private void IncreaseLevel() => SetLevelInEditor(Level + 1);
 		private void SetLevelInEditor(int value)
 		{
@@ -54,14 +59,27 @@ namespace Scripts.Towers
 				PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 			}
 		}
-		private void AssignSpriteRendererIfNecessary()
+		public void AssignSpriteRendererIfNecessary()
 		{
 			if (spriteRenderer != null) return;
 			spriteRenderer = Selection.activeTransform.GetComponentInChildren<SpriteRenderer>();
-			Debug.Log($"Assinged SpriteRenderer: {spriteRenderer} because it was missing.");
+			// Debug.Log($"Assigned SpriteRenderer: {spriteRenderer} because it was missing.");
 		}
 		#endif
 		#endregion </level>
+
+		[BoxGroup("Current")]
+		[ShowInInspector, ReadOnly]
+		public float Range { get; private set; }
+		[BoxGroup("Current")]
+		[ShowInInspector, ReadOnly]
+		public float AttackSpeed { get; private set; }
+		[BoxGroup("Current")]
+		[ShowInInspector, ReadOnly]
+		public Sprite Sprite { get; private set; }
+		[BoxGroup("Current")]
+		[ShowInInspector, ReadOnly]
+		public Color Color { get; private set; }
 
 		[field: SerializeField] public BaseStats BaseStats { get; private set; }
 
@@ -69,12 +87,6 @@ namespace Scripts.Towers
 		[field: SerializeField] public List<OverridableStats> UpgradeTiers { get; private set; }
 
 		[field: SerializeField, HideInInspector] private SpriteRenderer spriteRenderer;
-
-		public void Init(SpriteRenderer renderer)
-		{
-			spriteRenderer = renderer; // important that this happens first
-			UpdateStats();
-		}
 
 		public void UpdateStats()
 		{
@@ -94,11 +106,6 @@ namespace Scripts.Towers
 				Debug.LogWarning("SpriteRenderer on stats was unassigned?");
 			}
 		}
-
-		public float Range { get; private set; }
-		public float AttackSpeed { get; private set; }
-		public Sprite Sprite { get; private set; }
-		public Color Color { get; private set; }
 
 		[CanBeNull] public T FindAppropriateValueForLevel<T>(T baseValue, List<Optional<T>> upgrades)
 		{
@@ -128,25 +135,6 @@ namespace Scripts.Towers
 				}
 			}
 			return baseValue; // just in case we couldn't find an appropriate value
-		}
-
-		[ShowInInspector, ReadOnly, InlineProperty, PropertyOrder(-5)] private StatPackage CurrentStats => new StatPackage(Range, AttackSpeed, Color, Sprite);
-
-		[Serializable]
-		public struct StatPackage
-		{
-			public float range;
-			public float attackSpeed;
-			public Color color;
-			public Sprite sprite;
-
-			public StatPackage(float rangeVal, float attackSpeedVal, Color colorVal, Sprite spriteVal)
-			{
-				range = rangeVal;
-				attackSpeed = attackSpeedVal;
-				color = colorVal;
-				sprite = spriteVal;
-			}
 		}
 	}
 }

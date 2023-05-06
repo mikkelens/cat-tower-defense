@@ -29,6 +29,11 @@ namespace Scripts.Towers
 		{
 			Undo.undoRedoPerformed -= stats.UpdateStats;
 		}
+		private void OnValidate()
+		{
+			stats.AssignSpriteRendererIfNecessary();
+			stats.UpdateStats();
+		}
 		#endif
 
 		[Header("Projectile")]

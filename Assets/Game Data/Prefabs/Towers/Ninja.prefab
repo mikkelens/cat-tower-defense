@@ -93,6 +93,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8375398830376871439, guid: 00859e142288a3f4b9c89dfc85614268, type: 3}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.resetOnInit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: range.modifier.levelStackModifier.enabled
       value: 0
       objectReference: {fileID: 0}

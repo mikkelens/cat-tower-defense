@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Linq;
 using JetBrains.Annotations;
-using Scripts.Gameplay;
+using Scripts.Projectiles;
+using Scripts.Yarn;
 using Sirenix.OdinInspector;
 using Tools.Utils;
 using UnityEngine;

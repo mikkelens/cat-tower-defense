@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using Tools.Utils;
 using UnityEngine;
 
-namespace Scripts.Gameplay
+namespace Scripts.Yarn
 {
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 	public class YarnScript : MonoBehaviour

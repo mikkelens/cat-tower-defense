@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Scripts.Gameplay
+namespace Scripts.Yarn
 {
 	public class YarnManager : Singleton<YarnManager>
 	{

@@ -1,10 +1,11 @@
 ﻿using System.Collections;
+using Scripts.Yarn;
 using Sirenix.OdinInspector;
 using Tools.Types;
 using Tools.Utils;
 using UnityEngine;
 
-namespace Scripts.Gameplay
+namespace Scripts.Projectiles
 {
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 	public class ProjectileScript : MonoBehaviour

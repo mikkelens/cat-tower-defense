@@ -2,7 +2,7 @@
 using Tools.Types;
 using UnityEngine;
 
-namespace Scripts.Gameplay
+namespace Scripts.Projectiles
 {
 	public class ProjectileManager : Singleton<ProjectileManager>
 	{

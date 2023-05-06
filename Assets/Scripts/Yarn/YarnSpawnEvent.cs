@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Scripts.Gameplay
+namespace Scripts.Yarn
 {
 	[Serializable]
 	public class YarnSpawnEvent

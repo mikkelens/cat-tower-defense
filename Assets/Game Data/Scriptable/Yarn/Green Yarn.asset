@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19016b134084e11aecb22ba8e6031d6, type: 3}
+  m_Name: Green Yarn
+  m_EditorClassIdentifier: 
+  belowLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
+  speedOverride:
+    value: 0
+    enabled: 0
+  healthOverride:
+    value: 0
+    enabled: 0
+  damageAbsorptionCapOverride:
+    value: 0
+    enabled: 0
+  damagePassthroughTypeOverride:
+    value: 0
+    enabled: 0
+  colorOverride:
+    value: {r: 1, g: 1, b: 1, a: 1}
+    enabled: 0
+  spriteOverride:
+    value: {fileID: 0}
+    enabled: 0

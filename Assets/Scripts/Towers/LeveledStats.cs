@@ -16,20 +16,10 @@ namespace Scripts.Towers
 	[Serializable]
 	public class LeveledStats
 	{
-		[field: SerializeField, InlineProperty] public BaseStats BaseStats { get; private set; }
-
-		[field: SerializeField, ListDrawerSettings(ShowIndexLabels = true, DefaultExpandedState = false)]
-		public List<OverridableStats> UpgradeTiers { get; private set; }
-
-		[SerializeField, HideInInspector] private SpriteRenderer spriteRenderer;
-		public void Init(SpriteRenderer renderer)
-		{
-			spriteRenderer = renderer; // important that this happens first
-			UpdateStats();
-		}
-
-		[HorizontalGroup("LevelGroup", 0.75f)]
-		[SerializeField, ReadOnly, PropertyOrder(-1)] private int level; // prevent direct editing
+		#region <level>
+		[HorizontalGroup("LevelGroup")]
+		[PropertyOrder(-10)]
+		[SerializeField, ReadOnly] private int level; // prevent direct editing
 		public int Level
 		{
 			get => level;
@@ -45,10 +35,13 @@ namespace Scripts.Towers
 			}
 		}
 		#if UNITY_EDITOR
-		[HorizontalGroup("LevelGroup")]
-		[Button("-")] private void DecreaseLevel() => SetLevelInEditor(Level - 1);
-		[HorizontalGroup("LevelGroup")]
-		[Button("+")] private void IncreaseLevel() => SetLevelInEditor(Level + 1);
+		private const int LevelButtonsWidth = 60;
+		[UsedImplicitly] private bool CanDecreaseLevel => Level > -1;
+		[HorizontalGroup("LevelGroup", Width = LevelButtonsWidth), EnableIf("CanDecreaseLevel")]
+		[Button("Level--")] private void DecreaseLevel() => SetLevelInEditor(Level - 1);
+		[UsedImplicitly] private bool CanIncreaseLevel => Level < UpgradeTiers.Count - 1;
+		[HorizontalGroup("LevelGroup", Width = LevelButtonsWidth), EnableIf("CanIncreaseLevel")]
+		[Button("Level++")] private void IncreaseLevel() => SetLevelInEditor(Level + 1);
 		private void SetLevelInEditor(int value)
 		{
 			EditorGUI.BeginChangeCheck();
@@ -68,14 +61,28 @@ namespace Scripts.Towers
 			Debug.Log($"Assinged SpriteRenderer: {spriteRenderer} because it was missing.");
 		}
 		#endif
+		#endregion </level>
+
+		[field: SerializeField] public BaseStats BaseStats { get; private set; }
+
+		[ListDrawerSettings(ShowIndexLabels = true, DefaultExpandedState = false)]
+		[field: SerializeField] public List<OverridableStats> UpgradeTiers { get; private set; }
+
+		[field: SerializeField, HideInInspector] private SpriteRenderer spriteRenderer;
+
+		public void Init(SpriteRenderer renderer)
+		{
+			spriteRenderer = renderer; // important that this happens first
+			UpdateStats();
+		}
 
 		public void UpdateStats()
 		{
-			Range = FindAppropriateValueForLevel(level, BaseStats.Range, UpgradeTiers.Select(x => x.RangeOverride).ToList());
-			AttackSpeed = FindAppropriateValueForLevel(level, BaseStats.AttackSpeed, UpgradeTiers.Select(x => x.AttackSpeedOverride).ToList());
+			Range = FindAppropriateValueForLevel(BaseStats.Range, UpgradeTiers.Select(x => x.RangeOverride).ToList());
+			AttackSpeed = FindAppropriateValueForLevel(BaseStats.AttackSpeed, UpgradeTiers.Select(x => x.AttackSpeedOverride).ToList());
 
-			Sprite = FindAppropriateValueForLevel(level, BaseStats.Sprite, UpgradeTiers.Select(x => x.SpriteOverride).ToList());
-			Color = FindAppropriateValueForLevel(level, BaseStats.Color, UpgradeTiers.Select(x => x.ColorOverride).ToList());
+			Sprite = FindAppropriateValueForLevel(BaseStats.Sprite, UpgradeTiers.Select(x => x.SpriteOverride).ToList());
+			Color = FindAppropriateValueForLevel(BaseStats.Color, UpgradeTiers.Select(x => x.ColorOverride).ToList());
 			if (spriteRenderer != null)
 			{
 				if (Sprite != null) spriteRenderer.sprite = Sprite;
@@ -93,7 +100,7 @@ namespace Scripts.Towers
 		public Sprite Sprite { get; private set; }
 		public Color Color { get; private set; }
 
-		[CanBeNull] public T FindAppropriateValueForLevel<T>(int level, T baseValue, List<Optional<T>> upgrades)
+		[CanBeNull] public T FindAppropriateValueForLevel<T>(T baseValue, List<Optional<T>> upgrades)
 		{
 			if (level == -1 || upgrades.IsEmpty()) return baseValue;
 			if (upgrades.Count > level)
@@ -121,6 +128,25 @@ namespace Scripts.Towers
 				}
 			}
 			return baseValue; // just in case we couldn't find an appropriate value
+		}
+
+		[ShowInInspector, ReadOnly, InlineProperty, PropertyOrder(-5)] private StatPackage CurrentStats => new StatPackage(Range, AttackSpeed, Color, Sprite);
+
+		[Serializable]
+		public struct StatPackage
+		{
+			public float range;
+			public float attackSpeed;
+			public Color color;
+			public Sprite sprite;
+
+			public StatPackage(float rangeVal, float attackSpeedVal, Color colorVal, Sprite spriteVal)
+			{
+				range = rangeVal;
+				attackSpeed = attackSpeedVal;
+				color = colorVal;
+				sprite = spriteVal;
+			}
 		}
 	}
 }

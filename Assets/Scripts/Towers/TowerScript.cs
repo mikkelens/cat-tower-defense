@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Linq;
 using JetBrains.Annotations;
@@ -21,11 +20,6 @@ namespace Scripts.Towers
 		[Header("Tower")]
 		[SerializeField] private LeveledStats stats;
 
-		[Header("Projectile")]
-		[SerializeField, AssetsOnly, Required] private ProjectileScript projectilePrefab;
-		[SerializeField, Required] private Transform projectileSourcePoint;
-
-
 		#if UNITY_EDITOR
 		private void OnEnable()
 		{
@@ -36,6 +30,10 @@ namespace Scripts.Towers
 			Undo.undoRedoPerformed -= stats.UpdateStats;
 		}
 		#endif
+
+		[Header("Projectile")]
+		[SerializeField, AssetsOnly, Required] private ProjectileScript projectilePrefab;
+		[SerializeField, Required] private Transform projectileSourcePoint;
 
 		private void Start()
 		{

@@ -20,6 +20,6 @@ MonoBehaviour:
       enabled: 0
     damagePassthroughType: 0
     color: {r: 1, g: 1, b: 1, a: 1}
-    sprite: {fileID: 0}
-    deathSprite: {fileID: 0}
-    deathTime: 0
+    sprite: {fileID: -245650337, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
+    deathSprite: {fileID: -732959043, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
+    deathTime: 1.25

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   belowLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
   speedOverride:
-    value: 0
-    enabled: 0
+    value: 2
+    enabled: 1
   healthOverride:
-    value: 0
-    enabled: 0
+    value: 3
+    enabled: 1
   damageAbsorptionCapOverride:
     value: 0
     enabled: 0

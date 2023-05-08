@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: speed
       value: 2.6
       objectReference: {fileID: 0}
+    - target: {fileID: 7530115753290386844, guid: 2bc9b687bf95dd84eb0f9ca37e7eaeec, type: 3}
+      propertyPath: sourceLayer
+      value: 
+      objectReference: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

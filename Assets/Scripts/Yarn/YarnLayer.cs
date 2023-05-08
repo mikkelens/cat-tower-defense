@@ -4,7 +4,7 @@ using Tools.Types;
 using Unity.Properties;
 using UnityEngine;
 
-namespace Scripts.SOSystem
+namespace Scripts.Yarn
 {
 	/// <summary>
 	/// Common type, existing either as "Override" or "Base" yarn layer

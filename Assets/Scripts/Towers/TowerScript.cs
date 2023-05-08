@@ -18,8 +18,8 @@ namespace Scripts.Towers
 	#endif
 	public class TowerScript : MonoBehaviour
 	{
-		[Header("Tower")]
 		[SerializeField] private LeveledStats stats;
+		[SerializeField, Required] private Transform projectileSourcePoint;
 
 		#if UNITY_EDITOR
 		private void OnEnable()
@@ -36,10 +36,6 @@ namespace Scripts.Towers
 			stats.UpdateStats();
 		}
 		#endif
-
-		[Header("Projectile")]
-		[SerializeField, AssetsOnly, Required] private ProjectileScript projectilePrefab;
-		[SerializeField, Required] private Transform projectileSourcePoint;
 
 		private void Start()
 		{
@@ -69,8 +65,8 @@ namespace Scripts.Towers
 		{
 			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position.V2FromV3(), stats.Range);
 			return transform.ClosestScript(colliders
-				.Select(x => x.GetComponent<YarnScript>())
-				.Where(x => x != null));
+			                               .Select(x => x.GetComponent<YarnScript>())
+			                               .Where(x => x != null));
 		}
 
 		private void SpawnProjectile(YarnScript targetYarn)
@@ -81,8 +77,8 @@ namespace Scripts.Towers
 
 			Vector3 projectileSourcePos = projectileSourcePoint.position;
 			Vector2 projectileThrowDirection = (targetPos - projectileSourcePos.V2FromV3()).normalized;
-			ProjectileScript projectile = Instantiate(projectilePrefab, projectileSourcePos, Quaternion.identity, ProjectileManager.Instance.projectileParent);
-			projectile.Init(projectileThrowDirection);
+			OldProjectileScript oldProjectile = Instantiate(stats.Projectile, projectileSourcePos, Quaternion.identity, ProjectileManager.Instance.projectileParent);
+			oldProjectile.Init(projectileThrowDirection);
 		}
 
 		private void OnDrawGizmosSelected()

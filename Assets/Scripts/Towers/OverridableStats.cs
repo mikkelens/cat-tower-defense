@@ -1,4 +1,5 @@
 ﻿using System;
+using Scripts.Projectiles;
 using Sirenix.OdinInspector;
 using Tools.Types;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Scripts.Towers
 	{
 		[field: SerializeField] public Optional<float> RangeOverride { get; private set; }
 		[field: SerializeField] public Optional<float> AttackSpeedOverride { get; private set; }
+		[field: SerializeField] public Optional<Projectile> ProjectileOverride { get ; set ; }
 
 		[field: Space(5f)]
 		[field: SerializeField] public Optional<Sprite> SpriteOverride { get; private set; }

@@ -7,8 +7,9 @@ using UnityEngine;
 
 namespace Scripts.Projectiles
 {
+	// todo: remove this and replace with CommonProjectileScript
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-	public class ProjectileScript : MonoBehaviour
+	public class OldProjectileScript : MonoBehaviour
 	{
 		[Header("Gameplay")]
 		[SerializeField, Min(1)] private int damageAmount = 3;

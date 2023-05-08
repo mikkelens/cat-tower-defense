@@ -2,7 +2,7 @@
 using Tools.Types;
 using UnityEngine;
 
-namespace Scripts.SOSystem
+namespace Scripts.Yarn
 {
 	[CreateAssetMenu(menuName = "Scriptable/YarnOverrideLayer", fileName = "New YarnOverrideLayer")]
 	public class YarnOverrideLayer : YarnLayer

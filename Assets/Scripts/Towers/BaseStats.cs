@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using Scripts.Projectiles;
 using Sirenix.OdinInspector;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -16,6 +17,7 @@ namespace Scripts.Towers
 	{
 		[field: SerializeField] public float Range { get; private set; } = 2.05f;
 		[field: SerializeField] public float AttackSpeed { get; private set; } = 1f;
+		[field: SerializeField] public Projectile Projectile { get ; set ; }
 		[field: SerializeField] public Color Color { get; private set; } = Color.white;
 
 		[field: HorizontalGroup("Sprite")]

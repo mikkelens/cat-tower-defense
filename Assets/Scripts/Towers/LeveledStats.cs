@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Scripts.Projectiles;
 using Sirenix.OdinInspector;
 using Tools.Types;
 using Tools.Utils;
@@ -80,6 +81,10 @@ namespace Scripts.Towers
 		[BoxGroup("Current")]
 		[ShowInInspector, ReadOnly]
 		public Color Color { get; private set; }
+		[BoxGroup("Current")]
+		[ShowInInspector, ReadOnly]
+		public Projectile Projectile { get; private set; }
+
 
 		[field: SerializeField] public BaseStats BaseStats { get; private set; }
 
@@ -92,6 +97,7 @@ namespace Scripts.Towers
 		{
 			Range = FindAppropriateValueForLevel(BaseStats.Range, UpgradeTiers.Select(x => x.RangeOverride).ToList());
 			AttackSpeed = FindAppropriateValueForLevel(BaseStats.AttackSpeed, UpgradeTiers.Select(x => x.AttackSpeedOverride).ToList());
+			Projectile = FindAppropriateValueForLevel(BaseStats.Projectile, UpgradeTiers.Select(x => x.ProjectileOverride).ToList());
 
 			Sprite = FindAppropriateValueForLevel(BaseStats.Sprite, UpgradeTiers.Select(x => x.SpriteOverride).ToList());
 			Color = FindAppropriateValueForLevel(BaseStats.Color, UpgradeTiers.Select(x => x.ColorOverride).ToList());

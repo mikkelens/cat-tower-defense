@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Scripts.SOSystem;
 using Sirenix.OdinInspector;
 using Tools.Utils;
 using Unity.Properties;
@@ -29,6 +28,7 @@ namespace Scripts.Yarn
 		{
 			_pathTargets = targets;
 
+			if (sourceLayer == null) Debug.LogError($"Yarn '{name}' missing source layer!");
 			SetNewLayer(sourceLayer);
 			StartCoroutine(PathFollowRoutine());
 		}

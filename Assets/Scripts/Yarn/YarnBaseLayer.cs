@@ -1,7 +1,7 @@
 ﻿using Tools.Types;
 using UnityEngine;
 
-namespace Scripts.SOSystem
+namespace Scripts.Yarn
 {
 	[CreateAssetMenu(menuName = "Scriptable/YarnBaseLayer", fileName = "New YarnBaseLayer")]
 	public class YarnBaseLayer : YarnLayer

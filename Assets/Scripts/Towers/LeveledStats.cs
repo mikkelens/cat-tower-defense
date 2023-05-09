@@ -51,7 +51,6 @@ namespace Scripts.Towers
 		private void SetLevelInEditor(int value)
 		{
 			EditorGUI.BeginChangeCheck();
-			AssignSpriteRendererIfNecessary();
 			Level = value;
 			if (EditorGUI.EndChangeCheck())
 			{
@@ -60,11 +59,9 @@ namespace Scripts.Towers
 				PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 			}
 		}
-		public void AssignSpriteRendererIfNecessary()
+		public void AssignSpriteRenderer(SpriteRenderer renderer)
 		{
-			if (spriteRenderer != null) return;
-			spriteRenderer = Selection.activeTransform.GetComponentInChildren<SpriteRenderer>();
-			// Debug.Log($"Assigned SpriteRenderer: {spriteRenderer} because it was missing.");
+			spriteRenderer = renderer;
 		}
 		#endif
 		#endregion </level>
@@ -85,7 +82,6 @@ namespace Scripts.Towers
 		[ShowInInspector, ReadOnly]
 		public Projectile Projectile { get; private set; }
 
-
 		[field: SerializeField] public BaseStats BaseStats { get; private set; }
 
 		[ListDrawerSettings(ShowIndexLabels = true, DefaultExpandedState = false)]
@@ -104,7 +100,7 @@ namespace Scripts.Towers
 			if (spriteRenderer != null)
 			{
 				if (Sprite != null) spriteRenderer.sprite = Sprite;
-				else Debug.LogWarning($"Sprite from stats was null/empty, skipping sprite application..");
+				else Debug.LogWarning("Sprite from stats was null/empty, skipping sprite application..");
 				spriteRenderer.color = Color;
 			}
 			else

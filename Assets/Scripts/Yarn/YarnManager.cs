@@ -14,6 +14,7 @@ namespace Scripts.Yarn
 	{
 		#region fields/settings
 		[SerializeField, Required] private Transform spawnParent;
+		[SerializeField, Required] private YarnScript yarnScriptBasePrefab;
 		[SerializeField] private List<YarnSpawnEvent> spawnEvents = new List<YarnSpawnEvent>();
 		[Space]
 		[SerializeField] private List<Transform> transformPath = new List<Transform>();
@@ -41,8 +42,8 @@ namespace Scripts.Yarn
 				// spawn all the balloons for this event
 				for (int c = 0; c < spawnEvent.count; c++)
 				{
-					YarnScript spawnedYarn = Instantiate(spawnEvent.yarnPrefab, transformPath.First().position.WithZ(0f), Quaternion.identity, spawnParent);
-					spawnedYarn.Init(transformPath);
+					YarnScript spawnedYarn = Instantiate(yarnScriptBasePrefab, transformPath.First().position.WithZ(0f), Quaternion.identity, spawnParent);
+					spawnedYarn.Init(spawnEvent.yarnLayer, transformPath);
 
 					// delay next spawn in event by some amount
 					if (spawnEvent.delayBetweenSpawns > 0f)

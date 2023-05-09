@@ -19,7 +19,10 @@ namespace Scripts.Towers
 	public class TowerScript : MonoBehaviour
 	{
 		[SerializeField] private LeveledStats stats;
+		[SerializeField, Required] private CommonProjectileScript projectileBasePrefab;
 		[SerializeField, Required] private Transform projectileSourcePoint;
+
+		private SpriteRenderer _spriteRenderer;
 
 		#if UNITY_EDITOR
 		private void OnEnable()
@@ -32,7 +35,8 @@ namespace Scripts.Towers
 		}
 		private void OnValidate()
 		{
-			stats.AssignSpriteRendererIfNecessary();
+			_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+			stats.AssignSpriteRenderer(_spriteRenderer);
 			stats.UpdateStats();
 		}
 		#endif
@@ -77,8 +81,8 @@ namespace Scripts.Towers
 
 			Vector3 projectileSourcePos = projectileSourcePoint.position;
 			Vector2 projectileThrowDirection = (targetPos - projectileSourcePos.V2FromV3()).normalized;
-			OldProjectileScript oldProjectile = Instantiate(stats.Projectile, projectileSourcePos, Quaternion.identity, ProjectileManager.Instance.projectileParent);
-			oldProjectile.Init(projectileThrowDirection);
+			CommonProjectileScript projectileScript = Instantiate(projectileBasePrefab, projectileSourcePos, Quaternion.identity, ProjectileManager.Instance.projectileParent);
+			projectileScript.Init(stats.Projectile, projectileThrowDirection);
 		}
 
 		private void OnDrawGizmosSelected()

@@ -9,7 +9,7 @@ namespace Scripts.Yarn
 	{
 		[Min(0f)] public float eventStartDelay;
 		[Space(1f)]
-		[AssetsOnly] public YarnScript yarnPrefab;
+		[AssetsOnly] public YarnLayer yarnLayer;
 		[Min(0), MaxValue(1000)] public int count = 1;
 		[ShowIf("@count > 1")]
 		[Min(0f)] public float delayBetweenSpawns = 0.33f;

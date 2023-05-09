@@ -76,9 +76,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557d68cefaf72484e8403fe3a7eb1935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 2.75
-  projectilesPerSecond: 1
-  projectilePrefab: {fileID: 0}
+  stats:
+    level: 0
+    <BaseStats>k__BackingField:
+      <Range>k__BackingField: 2.05
+      <AttackSpeed>k__BackingField: 1
+      <Projectile>k__BackingField: {fileID: 0}
+      <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+      <Sprite>k__BackingField: {fileID: 0}
+    <UpgradeTiers>k__BackingField: []
+    spriteRenderer: {fileID: 2499407394587851383}
+  projectileBasePrefab: {fileID: 0}
   projectileSourcePoint: {fileID: 8233165722233073831}
 --- !u!1 &8059816071632564149
 GameObject:
@@ -155,7 +163,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6858813d0f1f28b4cafee677b3e2e49b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

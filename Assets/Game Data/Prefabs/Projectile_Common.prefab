@@ -93,11 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6390080229988866472}
-  - component: {fileID: -5124893165935745547}
+  - component: {fileID: -6364711556801517018}
   - component: {fileID: -8112450889122902762}
   - component: {fileID: 2942816219267443186}
   m_Layer: 0
-  m_Name: Projectile_Basic
+  m_Name: Projectile_Common
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5124893165935745547
+--- !u!114 &-6364711556801517018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,20 +128,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8529420408457629100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d59fb50f61b747539512ae2e8dec2aaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e2be2b48ef74a2493dae62a039cb97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
-  maxDamagePerHit:
-    value: 2
-    enabled: 0
-  canContinueAfterHit: 1
-  speed: 4
-  maxLifetime:
-    value: 2
-    enabled: 1
-  deathDestroyDelay: 0.33
-  deathSprite: {fileID: -732959043, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
 --- !u!50 &-8112450889122902762
 Rigidbody2D:
   serializedVersion: 4

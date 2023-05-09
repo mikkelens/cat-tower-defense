@@ -33,12 +33,12 @@ namespace Scripts.Yarn
 			public float deathTime;
 		}
 
-		public YarnValues GetValuesRecursively()
+		public YarnValues GetLayerValuesRecursively()
 		{
 			return this switch
 			{
 				YarnBaseLayer baseLayer => baseLayer.baseValues,
-				YarnOverrideLayer overrideLayer => overrideLayer.ApplyOverridesToValues(overrideLayer.belowLayer.GetValuesRecursively()),
+				YarnOverrideLayer overrideLayer => overrideLayer.ApplyOverridesToValues(overrideLayer.belowLayer.GetLayerValuesRecursively()),
 				_ => throw new InvalidContainerTypeException(GetType())
 			};
 		}
@@ -47,7 +47,7 @@ namespace Scripts.Yarn
 		public enum DamagePassthroughType
 		{
 			Penetrable, // let projectile damage affect below layers
-			Rigid // absorb layer damage, below layers unaffected
+			Impenetrable // absorb layer damage, below layers unaffected
 		}
 	}
 }

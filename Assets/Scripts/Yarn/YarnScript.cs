@@ -10,7 +10,7 @@ namespace Scripts.Yarn
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 	public class YarnScript : MonoBehaviour
 	{
-		[SerializeField, Required] private YarnLayer sourceLayer;
+		// [SerializeField, Required] private YarnLayer sourceLayer;
 
 		// buttons for refreshing values after editing
 		[ButtonGroup("LayerUpdateButtons"), PropertyOrder(-5)]
@@ -24,31 +24,38 @@ namespace Scripts.Yarn
 		private int _layerHealth;
 
 		[ShowInInspector, EnableIf("@_pathTargets != null")] private List<Transform> _pathTargets;
-		public void Init(List<Transform> targets) // called by manager that spawns it
+		public void Init(YarnLayer layer, List<Transform> targets) // called by manager that spawns it
 		{
-			_pathTargets = targets;
+			_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-			if (sourceLayer == null) Debug.LogError($"Yarn '{name}' missing source layer!");
-			SetNewLayer(sourceLayer);
+			SetNewLayer(layer);
+
+			_pathTargets = targets;
 			StartCoroutine(PathFollowRoutine());
 		}
 
 		private void SetNewLayer(YarnLayer layer)
 		{
+			if (layer == null) Debug.LogError($"Yarn '{name}' missing source layer!");
 			_layer = layer;
 			UpdateValues();
 		}
 		private void UpdateValues()
 		{
-			Values = _layer.GetValuesRecursively();
+			Values = _layer.GetLayerValuesRecursively();
 			_layerHealth = Values.health;
+
+			_spriteRenderer.sprite = Values.sprite;
+			_spriteRenderer.color = Values.color;
 		}
 
 		private YarnLayer.YarnValues Values { get; set; }
 
+		public bool CanBeDamaged => _layerHealth > 0;
 		public int Damage(int fullProjectileDamage)
 		{
-			if (_layerHealth == 0) return 0; // projectile can hit a dead thing if 2 projectiles hit it on the same physics update
+			// todo: remove, should not be needed bc of pre-call checks
+			// if (!CanDamage) return 0; // projectile can hit a dead thing if 2 projectiles hit it on the same physics update
 
 			int maxPossibleDamage = Mathf.Min(fullProjectileDamage, _layerHealth); // can never deal more damage than our total health
 			int layerDamage = Values.damageAbsorptionCap.Enabled ? Mathf.Min(maxPossibleDamage, Values.damageAbsorptionCap.Value) : maxPossibleDamage;
@@ -59,7 +66,7 @@ namespace Scripts.Yarn
 
 			YarnLayer.DamagePassthroughType passthroughType = Values.damagePassthroughType; // will change when we kill the layer/change layer
 			bool yarnDiedCompletely = KillCurrentLayer();
-			if (yarnDiedCompletely || passthroughType != YarnLayer.DamagePassthroughType.Penetrable)
+			if (yarnDiedCompletely || passthroughType != YarnLayer.DamagePassthroughType.Penetrable || !CanBeDamaged)
 				return layerDamage; // damage that was dealt at layer, which *did* kill layer
 			// yarn alive, remaining damage should be dealt to new layer
 

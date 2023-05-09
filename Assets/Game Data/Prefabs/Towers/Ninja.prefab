@@ -97,6 +97,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: projectileBasePrefab
+      value: 
+      objectReference: {fileID: -6364711556801517018, guid: a746fb3e48a45e54b840246ac169f4cc, type: 3}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: range.modifier.levelStackModifier.enabled
       value: 0
       objectReference: {fileID: 0}
@@ -116,6 +120,10 @@ PrefabInstance:
       propertyPath: stats.<BaseStats>k__BackingField.<Sprite>k__BackingField
       value: 
       objectReference: {fileID: 75266496, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<BaseStats>k__BackingField.<Projectile>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: d7bf7d12cec187843bde9a57c8958b8d, type: 2}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<RangeOverride>k__BackingField.value
       value: 2.5

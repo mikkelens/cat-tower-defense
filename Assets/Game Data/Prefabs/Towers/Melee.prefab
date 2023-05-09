@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 8375398830376871439, guid: 00859e142288a3f4b9c89dfc85614268, type: 3}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<BaseStats>k__BackingField.<Sprite>k__BackingField
+      value: 
+      objectReference: {fileID: -1990906579, guid: 41d7d83e2d04e964eaa3fb430ac4cef1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

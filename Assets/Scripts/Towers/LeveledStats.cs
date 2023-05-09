@@ -100,7 +100,7 @@ namespace Scripts.Towers
 			if (spriteRenderer != null)
 			{
 				if (Sprite != null) spriteRenderer.sprite = Sprite;
-				else Debug.LogWarning("Sprite from stats was null/empty, skipping sprite application..");
+				else Debug.LogWarning($"Sprite from stats was null/empty, skipping sprite application for {spriteRenderer.name}..");
 				spriteRenderer.color = Color;
 			}
 			else
@@ -109,10 +109,10 @@ namespace Scripts.Towers
 			}
 		}
 
-		[CanBeNull] public T FindAppropriateValueForLevel<T>(T baseValue, List<Optional<T>> upgrades)
+		private T FindAppropriateValueForLevel<T>(T baseValue, List<Optional<T>> upgrades)
 		{
 			if (level == -1 || upgrades.IsEmpty()) return baseValue;
-			if (upgrades.Count > level)
+			if (level < upgrades.Count)
 			{
 				// level *not* too high
 				Optional<T> exactUpgrade = upgrades[level];

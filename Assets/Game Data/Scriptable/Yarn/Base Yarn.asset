@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Base Yarn
   m_EditorClassIdentifier: 
   baseValues:
-    speed: 3
+    speed: 1.5
     health: 1
     damageAbsorptionCap:
       value: 1
@@ -23,9 +23,13 @@ MonoBehaviour:
     sprite: {fileID: -245650337, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
     deathEffect:
       value:
-        <Duration>k__BackingField: 0.4
-        <Sprite>k__BackingField: {fileID: -732959043, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
-        <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+        <Duration>k__BackingField: 0.25
+        <Sprite>k__BackingField:
+          value: {fileID: 0}
+          enabled: 0
+        <Color>k__BackingField:
+          value: {r: 1, g: 1, b: 1, a: 1}
+          enabled: 0
         <Size>k__BackingField: 0.75
         <Curve>k__BackingField:
           value:
@@ -33,24 +37,24 @@ MonoBehaviour:
             m_Curve:
             - serializedVersion: 3
               time: 0
-              value: 0.5
-              inSlope: 4.025446
-              outSlope: 4.025446
+              value: 0.8499985
+              inSlope: 3.1209066
+              outSlope: 3.1209066
               tangentMode: 0
-              weightedMode: 0
+              weightedMode: 3
               inWeight: 0
-              outWeight: 0.035714287
+              outWeight: 0.14790255
             - serializedVersion: 3
               time: 1
               value: 0
-              inSlope: 0
-              outSlope: 0
+              inSlope: -0.016774422
+              outSlope: -0.016774422
               tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
+              weightedMode: 3
+              inWeight: 1
               outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
           enabled: 1
-      enabled: 0
+      enabled: 1

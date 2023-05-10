@@ -25,8 +25,6 @@ namespace Scripts.Yarn
 		public Sprite sprite;
 
 		[Space] // never overridden
-		[ValidateInput(nameof(DeathEffectNullValidation), "If enabled, Death Effect should have a sprite!")]
 		public Optional<Effect> deathEffect;
-		private bool DeathEffectNullValidation => !deathEffect.Enabled || deathEffect.Value.Sprite != null;
 	}
 }

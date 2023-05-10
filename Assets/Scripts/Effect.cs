@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Sirenix.OdinInspector;
 using Tools.Types;
 using Tools.Utils;
 using UnityEngine;
@@ -11,8 +12,12 @@ namespace Scripts
 	{
 		[field: Min(0f)]
 		[field: SerializeField] public float Duration { get; set; }
-		[field: SerializeField] public Sprite Sprite { get; private set; }
-		[field: SerializeField] public Color Color { get; set; }
+
+		private bool DeathEffectNullValidation => !Sprite.Enabled || Sprite.Value != null;
+		[field: ValidateInput(nameof(DeathEffectNullValidation), "If enabled, Death Effect should have a sprite!")]
+		[field: SerializeField] public Optional<Sprite> Sprite { get; private set; }
+
+		[field: SerializeField] public Optional<Color> Color { get; set; }
 		[field: SerializeField] public float Size { get; set; }
 		[field: SerializeField] public Optional<AnimationCurve> Curve { get; set; }
 
@@ -21,7 +26,7 @@ namespace Scripts
 			return new Effect
 			{
 				Duration = duration,
-				Color = Color.white,
+				Color = new Optional<Color>(UnityEngine.Color.white),
 				Size = 1f,
 				Curve = AnimationCurve.Linear(0f, 1f, 1f, 0f).AsDisabled(),
 			};
@@ -29,8 +34,8 @@ namespace Scripts
 
 		public IEnumerator ApplyEffectToSpriteRenderer(SpriteRenderer spriteRenderer)
 		{
-			spriteRenderer.sprite = Sprite;
-			spriteRenderer.color = Color;
+			if (Sprite.Enabled) spriteRenderer.sprite = Sprite.Value;
+			if (Color.Enabled) spriteRenderer.color = Color.Value;
 			spriteRenderer.transform.localScale = Size.ToCubeV3();
 			spriteRenderer.sortingLayerName = "Effect";
 

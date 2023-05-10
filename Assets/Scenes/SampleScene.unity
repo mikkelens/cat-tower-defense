@@ -1087,19 +1087,19 @@ MonoBehaviour:
   spawnEvents:
   - eventStartDelay: 0
     yarnLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
-    count: 10
-    delayBetweenSpawns: 0.1
-  - eventStartDelay: 1.25
-    yarnLayer: {fileID: 11400000, guid: 6eee38868dc3a1f46943d8f087e83ebf, type: 2}
-    count: 1
-    delayBetweenSpawns: 0.33
-  - eventStartDelay: 2
-    yarnLayer: {fileID: 11400000, guid: 6eee38868dc3a1f46943d8f087e83ebf, type: 2}
-    count: 3
-    delayBetweenSpawns: 0.5
-  - eventStartDelay: 2
-    yarnLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
     count: 5
+    delayBetweenSpawns: 0.25
+  - eventStartDelay: 2
+    yarnLayer: {fileID: 11400000, guid: 6eee38868dc3a1f46943d8f087e83ebf, type: 2}
+    count: 4
+    delayBetweenSpawns: 0.5
+  - eventStartDelay: 3
+    yarnLayer: {fileID: 11400000, guid: 6eee38868dc3a1f46943d8f087e83ebf, type: 2}
+    count: 6
+    delayBetweenSpawns: 0.3
+  - eventStartDelay: 3
+    yarnLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
+    count: 20
     delayBetweenSpawns: 0.2
   transformPath:
   - {fileID: 531465143}

@@ -2,7 +2,6 @@
 using Sirenix.OdinInspector;
 using Tools.Types;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Scripts.Yarn
 {

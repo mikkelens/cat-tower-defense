@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6122394113734931232, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Name
-      value: Bomber
+      value: Mouse
       objectReference: {fileID: 0}
     - target: {fileID: 8233165722233073831, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_LocalPosition.x

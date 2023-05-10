@@ -17,11 +17,11 @@ MonoBehaviour:
     value: 2.25
     enabled: 1
   healthOverride:
-    value: 1
-    enabled: 0
+    value: 3
+    enabled: 1
   damageAbsorptionCapOverride:
-    value: 0
-    enabled: 0
+    value: 1
+    enabled: 1
   damagePassthroughTypeOverride:
     value: 0
     enabled: 0

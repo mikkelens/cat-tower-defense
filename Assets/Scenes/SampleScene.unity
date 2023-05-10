@@ -714,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4128899418769348701, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
       propertyPath: m_Name
-      value: Bomber
+      value: Mouse
       objectReference: {fileID: 0}
     - target: {fileID: 5698316794912575754, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
       propertyPath: m_Color.b
@@ -976,6 +976,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1163658177436531550, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
+      propertyPath: stats.<BaseStats>k__BackingField.<AttackSpeed>k__BackingField
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2304090100445961178, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.411
@@ -990,11 +994,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.21
+      value: -3.77
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.57
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1034,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4128899418769348701, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5698316794912575754, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_Color.b
@@ -1361,11 +1365,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.87
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.21
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1389,7 +1393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4128899418769348701, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5698316794912575754, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_Color.b

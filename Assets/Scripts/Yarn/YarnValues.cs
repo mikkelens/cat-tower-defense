@@ -17,7 +17,7 @@ namespace Scripts.Yarn
 		public Optional<int> damageAbsorptionCap;
 		private bool DamageAbsorptionMinValidation => !damageAbsorptionCap.Enabled || (damageAbsorptionCap.Value > 0 && damageAbsorptionCap.Value < health);
 
-		[FormerlySerializedAs("surfaceType")] [FormerlySerializedAs("surfaceStrength")] [FormerlySerializedAs("damagePassthroughType")] public YarnLayer.Surface surface;
+		public YarnLayer.Surface surface;
 
 		[Space]
 		public Color color;

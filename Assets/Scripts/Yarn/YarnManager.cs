@@ -12,16 +12,17 @@ namespace Scripts.Yarn
 {
 	public class YarnManager : Singleton<YarnManager>
 	{
-		#region fields/settings
+		[Header("Yarn Spawning")]
 		[SerializeField, Required] private Transform spawnParent;
 		[SerializeField, Required] private YarnScript yarnScriptBasePrefab;
 		[SerializeField] private List<YarnSpawnEvent> spawnEvents = new List<YarnSpawnEvent>();
 		[Space]
 		[SerializeField] private List<Transform> transformPath = new List<Transform>();
-		#endregion
+
+
 
 		[Header("Debug")]
-		[SerializeField] private bool showInfoAlways = true;
+		[SerializeField] private bool showPathAlways = true;
 
 		private void Start()
 		{
@@ -58,18 +59,18 @@ namespace Scripts.Yarn
 		private void OnDrawGizmos()
 		{
 			bool drawEnds;
-			bool drawPath;
+			bool drawLinesAndPoints;
 
-			if (showInfoAlways)
+			if (showPathAlways)
 			{
 				drawEnds = true;
-				drawPath = true;
+				drawLinesAndPoints = true;
 			}
 			else
 			{
 				Object[] selectedObjects = Selection.objects;
 				drawEnds = selectedObjects.Contains(gameObject);
-				drawPath = transformPath.Exists(point =>
+				drawLinesAndPoints = transformPath.Exists(point =>
 				{
 					Transform parent;
 					return selectedObjects.Contains(point.gameObject)
@@ -77,13 +78,13 @@ namespace Scripts.Yarn
 				});
 			}
 
-			if (!drawEnds && !drawPath) return;
+			if (!drawEnds && !drawLinesAndPoints) return;
 
 			// draw lines
 			Gizmos.color = Color.grey;
 			Gizmos.DrawLineStrip(transformPath.Select(x => x.position).ToArray(), false);
 
-			if (drawPath)
+			if (drawLinesAndPoints)
 			{
 				// draw points
 				Gizmos.color = Color.white;

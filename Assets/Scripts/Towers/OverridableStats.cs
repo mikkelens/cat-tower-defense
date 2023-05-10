@@ -13,12 +13,10 @@ namespace Scripts.Towers
 	[InlineProperty]
 	public class OverridableStats
 	{
-		[field: Header("Gameplay")]
 		[field: SerializeField] public Optional<float> RangeOverride { get; private set; }
 		[field: SerializeField] public Optional<float> AttackSpeedOverride { get; private set; }
 		[field: SerializeField] public Optional<Projectile> ProjectileOverride { get ; set ; }
 
-		[field: Header("Visuals")]
 		[field: SerializeField] public Optional<Sprite> SpriteOverride { get; private set; }
 		[field: SerializeField] public Optional<Color> ColorOverride { get; private set; } = new Optional<Color>(Color.white);
 	}

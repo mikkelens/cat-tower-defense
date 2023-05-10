@@ -4,7 +4,8 @@
     "references": [
         "Unity.InputSystem",
         "Types",
-        "Utils"
+        "Utils",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

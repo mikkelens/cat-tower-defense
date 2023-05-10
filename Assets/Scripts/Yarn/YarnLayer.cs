@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using Tools.Types;
 using Unity.Properties;
@@ -44,10 +45,23 @@ namespace Scripts.Yarn
 		}
 
 		[Serializable]
+		[UsedImplicitly] // other values than ones tested against by if statements could be selected in unity editor
 		public enum DamagePassthroughType
 		{
 			Penetrable, // let projectile damage affect below layers
 			Impenetrable // absorb layer damage, below layers unaffected
+		}
+
+		public int GetStackedHealthRecursively()
+		{
+			int layerHealth = GetLayerValuesRecursively().health;
+			int belowHealth = 0;
+			if (this is YarnOverrideLayer overrideLayer)
+			{
+				belowHealth = overrideLayer.belowLayer.GetStackedHealthRecursively();
+			}
+
+			return layerHealth + belowHealth;
 		}
 	}
 }

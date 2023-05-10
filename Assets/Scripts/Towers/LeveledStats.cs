@@ -52,12 +52,11 @@ namespace Scripts.Towers
 		{
 			EditorGUI.BeginChangeCheck();
 			Level = value;
-			if (EditorGUI.EndChangeCheck())
-			{
-				Object target = Selection.activeObject;
-				Undo.RecordObject(target, "Changed Tower Level");
-				PrefabUtility.RecordPrefabInstancePropertyModifications(target);
-			}
+			if (!EditorGUI.EndChangeCheck()) return;
+
+			Object target = Selection.activeObject;
+			Undo.RecordObject(target, "Changed Tower Level");
+			PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 		}
 		public void AssignSpriteRenderer(SpriteRenderer renderer)
 		{
@@ -66,37 +65,37 @@ namespace Scripts.Towers
 		#endif
 		#endregion </level>
 
-		[BoxGroup("Current")]
+		[FoldoutGroup("Current")]
 		[ShowInInspector, ReadOnly]
 		public float Range { get; private set; }
-		[BoxGroup("Current")]
+		[FoldoutGroup("Current")]
 		[ShowInInspector, ReadOnly]
 		public float AttackSpeed { get; private set; }
-		[BoxGroup("Current")]
+		[FoldoutGroup("Current")]
 		[ShowInInspector, ReadOnly]
 		public Sprite Sprite { get; private set; }
-		[BoxGroup("Current")]
+		[FoldoutGroup("Current")]
 		[ShowInInspector, ReadOnly]
 		public Color Color { get; private set; }
-		[BoxGroup("Current")]
+		[FoldoutGroup("Current")]
 		[ShowInInspector, ReadOnly]
 		public Projectile Projectile { get; private set; }
 
 		[field: SerializeField] public BaseStats BaseStats { get; private set; }
 
 		[ListDrawerSettings(ShowIndexLabels = true, DefaultExpandedState = false)]
-		[field: SerializeField] public List<OverridableStats> UpgradeTiers { get; private set; }
+		[field: SerializeField] public List<Upgrade> UpgradeTiers { get; private set; }
 
 		[field: SerializeField, HideInInspector] private SpriteRenderer spriteRenderer;
 
 		public void UpdateStats()
 		{
-			Range = FindAppropriateValueForLevel(BaseStats.Range, UpgradeTiers.Select(x => x.RangeOverride).ToList());
-			AttackSpeed = FindAppropriateValueForLevel(BaseStats.AttackSpeed, UpgradeTiers.Select(x => x.AttackSpeedOverride).ToList());
-			Projectile = FindAppropriateValueForLevel(BaseStats.Projectile, UpgradeTiers.Select(x => x.ProjectileOverride).ToList());
+			Range = FindAppropriateValueForLevel(BaseStats.Range, UpgradeTiers.Select(x => x.Overrides.RangeOverride).ToList());
+			AttackSpeed = FindAppropriateValueForLevel(BaseStats.AttackSpeed, UpgradeTiers.Select(x => x.Overrides.AttackSpeedOverride).ToList());
+			Projectile = FindAppropriateValueForLevel(BaseStats.Projectile, UpgradeTiers.Select(x => x.Overrides.ProjectileOverride).ToList());
 
-			Sprite = FindAppropriateValueForLevel(BaseStats.Sprite, UpgradeTiers.Select(x => x.SpriteOverride).ToList());
-			Color = FindAppropriateValueForLevel(BaseStats.Color, UpgradeTiers.Select(x => x.ColorOverride).ToList());
+			Sprite = FindAppropriateValueForLevel(BaseStats.Sprite, UpgradeTiers.Select(x => x.Overrides.SpriteOverride).ToList());
+			Color = FindAppropriateValueForLevel(BaseStats.Color, UpgradeTiers.Select(x => x.Overrides.ColorOverride).ToList());
 			if (spriteRenderer != null)
 			{
 				if (Sprite != null) spriteRenderer.sprite = Sprite;

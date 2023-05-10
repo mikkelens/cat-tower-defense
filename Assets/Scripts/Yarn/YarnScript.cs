@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Scripts.Player;
 using Sirenix.OdinInspector;
 using Tools.Utils;
 using Unity.Properties;
@@ -124,6 +125,15 @@ namespace Scripts.Yarn
 					yield return new WaitForSeconds(deltaTime); // waits one frame: https://forum.unity.com/threads/coroutine-wait-x-frames-not-seconds.550168/
 				}
 			}
+
+			int yarnDamage = _layer.GetStackedHealthRecursively();
+			PlayerHealthManager.Instance.Damage(yarnDamage);
+			Cull();
+		}
+
+		private void Cull()
+		{
+			Destroy(gameObject);
 		}
 	}
 }

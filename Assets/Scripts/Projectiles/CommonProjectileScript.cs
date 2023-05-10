@@ -35,10 +35,13 @@ namespace Scripts.Projectiles
 		private void ApplyProjectile(Projectile projectile) // possibly used multiple times
 		{
 			if (projectile == null) Debug.LogError("Projectile missing when trying to assign it at instantiation Init()");
+
 			_projectile = projectile;
 			_projectileDamageLeft = _projectile.MaxDamage.Enabled ? _projectile.MaxDamage.Value : int.MaxValue;
+
 			_rb.velocity = _throwDirection * _projectile.TravelSpeed;
 			_spriteRenderer.sprite = _projectile.Sprite;
+			_spriteRenderer.color = _projectile.Color;
 		}
 
 		private void FixedUpdate()
@@ -48,7 +51,7 @@ namespace Scripts.Projectiles
 			if (_projectileAlive && (_projectile.MaxLifetime.Enabled && _startTime.TimeSince() > _projectile.MaxLifetime.Value
 			                         || Camera.main.PointOutsideViewArea2D(transform.position.V2FromV3(), cullClearance)))
 			{
-				CullImmediate();
+				Cull();
 			}
 		}
 
@@ -99,16 +102,40 @@ namespace Scripts.Projectiles
 			_col.enabled = false;
 			_rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-			_spriteRenderer.sprite = _projectile.DeathSprite;
-			StartCoroutine(CullAfterDelay(_projectile.DeathCullDelay));
+			if (_projectile.DeathEffect.Enabled)
+			{
+				ProjectileDeathEffect deathEffect = _projectile.DeathEffect.Value;
+				_spriteRenderer.sprite = deathEffect.Sprite;
+				_spriteRenderer.color = deathEffect.Color;
+				StartCoroutine(deathEffect.Curve.Enabled
+					? AnimateDeathEffect(deathEffect)
+					: CullAfterDelay(deathEffect.Duration));
+			}
+			else
+			{
+				Cull();
+			}
+		}
+
+		private IEnumerator AnimateDeathEffect(ProjectileDeathEffect deathEffect)
+		{
+			Transform spriteTransform = _spriteRenderer.transform;
+			Vector3 baseSize = deathEffect.Size.ToCubeV3();
+			float startTime = Time.time;
+			while (startTime.TimeSince() <= deathEffect.Duration)
+			{
+				float t = startTime.TimeSince() / deathEffect.Duration;
+				spriteTransform.localScale = deathEffect.Curve.Value.Evaluate(t) * baseSize;
+				yield return new WaitForSeconds(Time.deltaTime);
+			}
 		}
 
 		private IEnumerator CullAfterDelay(float delay)
 		{
 			yield return new WaitForSeconds(delay);
-			CullImmediate();
+			Cull();
 		}
-		private void CullImmediate()
+		private void Cull()
 		{
 			Destroy(gameObject);
 		}

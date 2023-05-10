@@ -25,13 +25,20 @@ namespace Scripts.Towers
 
 		#if UNITY_EDITOR
 		[HorizontalGroup("Sprite")]
-		[EnableIf("@Sprite != FindSpriteFromRenderer")]
+		[EnableIf("@Sprite != FindSpriteFromRenderer()")]
 		[Button("Find from SpriteRenderer")] public void ApplySpriteFromRenderer()
 		{
-			Sprite = FindSpriteFromRenderer;
+			Sprite = FindSpriteFromRenderer();
 			// EditorUtility.SetDirty(Selection.activeTransform.GetComponent<TowerScript>()); // not needed it seems
 		}
-		[UsedImplicitly] public Sprite FindSpriteFromRenderer => Selection.activeTransform.GetComponentInChildren<SpriteRenderer>().sprite;
+		[UsedImplicitly, CanBeNull] public Sprite FindSpriteFromRenderer()
+		{
+			Transform activeTransform = Selection.activeTransform;
+			if (activeTransform == null) return null;
+			SpriteRenderer spriteRenderer = activeTransform.GetComponentInChildren<SpriteRenderer>();
+			if (spriteRenderer == null) return null;
+			return spriteRenderer.sprite;
+		}
 		#endif
 	}
 }

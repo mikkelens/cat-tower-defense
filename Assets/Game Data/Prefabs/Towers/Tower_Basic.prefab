@@ -86,7 +86,7 @@ MonoBehaviour:
       <Sprite>k__BackingField: {fileID: 0}
     <UpgradeTiers>k__BackingField: []
     spriteRenderer: {fileID: 2499407394587851383}
-  projectileBasePrefab: {fileID: 0}
+  projectileBasePrefab: {fileID: -6364711556801517018, guid: a746fb3e48a45e54b840246ac169f4cc, type: 3}
   projectileSourcePoint: {fileID: 8233165722233073831}
 --- !u!1 &8059816071632564149
 GameObject:

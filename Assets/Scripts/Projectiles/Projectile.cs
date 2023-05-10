@@ -3,7 +3,6 @@ using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using Tools.Types;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Scripts.Projectiles
 {
@@ -23,10 +22,10 @@ namespace Scripts.Projectiles
 		[field: SerializeField] public Optional<float> MaxLifetime { get; private set; } = new Optional<float>(4f);
 
 		// damage
-		private bool MaxDamageValidation => MaxDamage.Enabled == false || MaxDamage.Value > 0;
+		private bool MaxTotalDamageValidation => MaxTotalDamage.Enabled == false || MaxTotalDamage.Value > 0;
 		[field: Header("Damage")]
-		[field: ValidateInput(nameof(MaxDamageValidation), "Max Damage cannot be 0 or less.")]
-		[field: SerializeField] public Optional<int> MaxDamage { get; private set; } = new Optional<int>(3, true);
+		[field: ValidateInput(nameof(MaxTotalDamageValidation), "Max Total Damage cannot be 0 or less.")]
+		[field: SerializeField] public Optional<int> MaxTotalDamage { get; private set; } = new Optional<int>(3, true);
 
 		// durability
 		[field: ShowIf(nameof(SurfaceImpactShow))] // reuse
@@ -41,7 +40,7 @@ namespace Scripts.Projectiles
 		// impact
 		[field: ShowIf(nameof(SurfaceImpactShow))]
 		[field: SerializeField] public SurfaceImpact SurfaceImpactType { get; private set; } = SurfaceImpact.SurfaceOnly;
-		private bool SurfaceImpactShow => !MaxDamage.Enabled || MaxDamage.Value > 1; // would never be used if maxdamage was enabled as 1
+		private bool SurfaceImpactShow => !MaxTotalDamage.Enabled || MaxTotalDamage.Value > 1; // would never be used if maxdamage was enabled as 1
 		[Serializable]
 		public enum SurfaceImpact
 		{
@@ -50,11 +49,11 @@ namespace Scripts.Projectiles
 		}
 
 		// rigidness optional specification
-		private bool MaxDamagePerHitShow => !MaxDamageValidation || MaxDamage is { Enabled: true, Value: > 1 } && ShellDurabilityType == ShellDurability.Rigid;
-		private bool MaxDamagePerHitValidation => !MaxDamagePerHitShow || !MaxDamagePerCollision.Enabled ||
-		                                          (MaxDamagePerCollision.Value > 0 && (!MaxDamage.Enabled || MaxDamagePerCollision.Value < MaxDamage.Value));
-		[field: ShowIf(nameof(MaxDamagePerHitShow))]
-		[field: ValidateInput(nameof(MaxDamagePerHitValidation), "Piercing Damage Per Hit must be bigger than zero and less than Max Damage.")]
+		private bool MaxDamagePerCollisionShow => !MaxTotalDamageValidation || MaxTotalDamage is { Enabled: true, Value: > 1 } && ShellDurabilityType == ShellDurability.Rigid;
+		private bool MaxDamagePerCollisionValidation => !MaxDamagePerCollisionShow || !MaxDamagePerCollision.Enabled ||
+		                                                (MaxDamagePerCollision.Value > 0 && (!MaxTotalDamage.Enabled || MaxDamagePerCollision.Value < MaxTotalDamage.Value));
+		[field: ShowIf(nameof(MaxDamagePerCollisionShow))]
+		[field: ValidateInput(nameof(MaxDamagePerCollisionValidation), "Piercing Damage Per Hit must be bigger than zero and less than Max Total Damage.")]
 		[field: SerializeField] public Optional<int> MaxDamagePerCollision { get; private set; } = new Optional<int>(2);
 
 		// optional below projectile
@@ -81,7 +80,8 @@ namespace Scripts.Projectiles
 		public class AreaOfEffect
 		{
 			[field: SerializeField] public float Radius { get; private set; } = 1.25f;
-			[field: SerializeField] public Optional<int> MaxDamage { get; private set; } = new Optional<int>(3, true);
+			[field: SerializeField] public Optional<int> MaxTotalDamage { get; private set; } = new Optional<int>(3, true);
+			[field: SerializeField] public Optional<int> MaxDamagePerCollider { get; private set; } = new Optional<int>(2);
 			[field: SerializeField] public SurfaceImpact ImpactType { get; private set; } = SurfaceImpact.Penetrating;
 			[field: SerializeField] public Trigger TriggerType {get; private set; } = Trigger.LastImpact;
 			public enum Trigger
@@ -90,6 +90,8 @@ namespace Scripts.Projectiles
 				AllImpacts, // any impact
 				LastImpact, // last impact for this projectile layer
 			}
+			[field: SerializeField, Required, AssetsOnly] public BasicEffectScript EffectBasePrefab { get; private set; }
+			[field: SerializeField] public Effect Effect { get; private set; } = Effect.LinearFade();
 		}
 
 		// visuals

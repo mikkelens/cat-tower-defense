@@ -105,10 +105,9 @@ namespace Scripts.Yarn
 				const float minDistance = 0.0001f;
 				while (Vector2.Distance(RB.position, targetPos) > minDistance)
 				{
-					float deltaTime = Time.deltaTime;
-					Vector2 newPos = Vector2.MoveTowards(RB.position, targetPos, Values.speed * deltaTime);
+					Vector2 newPos = Vector2.MoveTowards(RB.position, targetPos, Values.speed * Time.fixedDeltaTime);
 					RB.MovePosition(newPos);
-					yield return new WaitForSeconds(deltaTime); // waits one frame: https://forum.unity.com/threads/coroutine-wait-x-frames-not-seconds.550168/
+					yield return new WaitForSeconds(Time.fixedDeltaTime); // waits one frame: https://forum.unity.com/threads/coroutine-wait-x-frames-not-seconds.550168/
 				}
 			}
 

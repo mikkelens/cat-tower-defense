@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Base Yarn
   m_EditorClassIdentifier: 
   baseValues:
-    speed: 1.25
+    speed: 2
     health: 1
     damageAbsorptionCap:
       value: 1
       enabled: 0
-    damagePassthroughType: 1
+    surface: 1
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: -245650337, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
     deathEffect:
@@ -53,4 +53,4 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
           enabled: 1
-      enabled: 1
+      enabled: 0

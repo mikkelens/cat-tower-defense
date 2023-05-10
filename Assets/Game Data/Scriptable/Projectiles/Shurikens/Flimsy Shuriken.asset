@@ -17,18 +17,62 @@ MonoBehaviour:
   <MaxLifetime>k__BackingField:
     value: 2
     enabled: 1
-  <MaxDamage>k__BackingField:
-    value: 2
+  <MaxTotalDamage>k__BackingField:
+    value: 3
     enabled: 1
   <ShellDurabilityType>k__BackingField: 0
   <SurfaceImpactType>k__BackingField: 1
   <MaxDamagePerCollision>k__BackingField:
-    value: 2
-    enabled: 0
+    value: 1
+    enabled: 1
   <BelowProjectile>k__BackingField:
     value: {fileID: 0}
     enabled: 0
   <BelowDamageStack>k__BackingField: 0
+  impactAreaOfEffect:
+    value:
+      <Radius>k__BackingField: 1.25
+      <MaxTotalDamage>k__BackingField:
+        value: 3
+        enabled: 1
+      <MaxDamagePerCollider>k__BackingField:
+        value: 2
+        enabled: 0
+      <ImpactType>k__BackingField: 0
+      <TriggerType>k__BackingField: 2
+      <EffectBasePrefab>k__BackingField: {fileID: 0}
+      <Effect>k__BackingField:
+        <Duration>k__BackingField: 0.5
+        <Sprite>k__BackingField: {fileID: 0}
+        <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+        <Size>k__BackingField: 1
+        <Curve>k__BackingField:
+          value:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: -1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 0
+              inSlope: -1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          enabled: 0
+    enabled: 1
   <Sprite>k__BackingField: {fileID: 263052880, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
   <Color>k__BackingField: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   <DeathEffect>k__BackingField:

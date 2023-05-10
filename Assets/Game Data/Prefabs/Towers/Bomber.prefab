@@ -11,22 +11,22 @@ PrefabInstance:
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 75266496, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
+      objectReference: {fileID: -60319899, guid: e9bd65bd533586b4cb0df2251317d053, type: 3}
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Color.b
-      value: 0.059238147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Color.g
-      value: 0.059238147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Color.r
-      value: 0.6037736
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5100729175102530685, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_RootOrder
@@ -45,6 +45,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100729175102530685, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100729175102530685, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100729175102530685, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100729175102530685, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100729175102530685, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -58,11 +74,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5101151476607338658, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9975641
+      value: 0.99965733
       objectReference: {fileID: 0}
     - target: {fileID: 5101151476607338658, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.06975647
+      value: 0.026176924
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101151476607338658, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5101151476607338658, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -70,71 +90,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6122394113734931232, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Name
-      value: Ninja
+      value: Bomber
       objectReference: {fileID: 0}
     - target: {fileID: 8233165722233073831, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.422
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8233165722233073831, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.level
-      value: 3
+      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 8375398830376871439, guid: 00859e142288a3f4b9c89dfc85614268, type: 3}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.resetOnInit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: projectileBasePrefab
-      value: 
-      objectReference: {fileID: -6364711556801517018, guid: a746fb3e48a45e54b840246ac169f4cc, type: 3}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: range.modifier.levelStackModifier.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: projectilesPerSecond.modifier.levelStackModifier
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: projectilesPerSecond.modifier.levelStackModifier.enabled
-      value: 1
+      propertyPath: stats.<BaseStats>k__BackingField.<Range>k__BackingField
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<BaseStats>k__BackingField.<Sprite>k__BackingField
       value: 
-      objectReference: {fileID: 75266496, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
+      objectReference: {fileID: -60319899, guid: e9bd65bd533586b4cb0df2251317d053, type: 3}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<BaseStats>k__BackingField.<Projectile>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: 9585de5c001d811498455eacb2a04d34, type: 2}
+      objectReference: {fileID: 11400000, guid: f694b505cca0be94dbb9dc613705787d, type: 2}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<BaseStats>k__BackingField.<AttackSpeed>k__BackingField
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<RangeOverride>k__BackingField.value
-      value: 2.5
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<RangeOverride>k__BackingField.value
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<RangeOverride>k__BackingField.value
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<RangeOverride>k__BackingField.value
-      value: 6
+      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.enabled
@@ -146,11 +142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.value.b
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.value.g
-      value: 0.8888889
+      value: 0.8829699
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<ColorOverride>k__BackingField.value.r
@@ -170,22 +166,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.value.b
-      value: 0
+      value: 0.6441185
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.value.g
-      value: 1
+      value: 0.5977661
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<ColorOverride>k__BackingField.value.r
-      value: 0.5817883
+      value: 0.9528302
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<RangeOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
@@ -194,67 +186,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.value.b
-      value: 0.3537736
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.value.g
-      value: 0.3537736
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<ColorOverride>k__BackingField.value.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<RangeOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.value.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.value.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<ColorOverride>k__BackingField.value.r
-      value: 0.3386531
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<RangeOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<AttackSpeedOverride>k__BackingField.value
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<AttackSpeedOverride>k__BackingField.value
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<AttackSpeedOverride>k__BackingField.value
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<AttackSpeedOverride>k__BackingField.value
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<AttackSpeedOverride>k__BackingField.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<AttackSpeedOverride>k__BackingField.enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<AttackSpeedOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<RangeOverride>k__BackingField.value
-      value: 2.25
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<RangeOverride>k__BackingField.value
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<RangeOverride>k__BackingField.value
-      value: 4
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<RangeOverride>k__BackingField.value
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<ColorOverride>k__BackingField.enabled
@@ -266,11 +230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.b
-      value: 0.8537736
+      value: 0.8915094
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.g
-      value: 0.8537736
+      value: 0.9349374
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.r
@@ -290,114 +254,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.b
-      value: 0.656356
+      value: 0.5896226
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.g
-      value: 0.50614095
+      value: 0.5896226
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<RangeOverride>k__BackingField.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<ColorOverride>k__BackingField.enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.b
-      value: 0.11974903
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.g
-      value: 0.32020068
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.r
-      value: 0.6509434
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<RangeOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<ColorOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.b
-      value: 0.059238147
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.g
-      value: 0.059238147
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<ColorOverride>k__BackingField.value.r
-      value: 0.6037736
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<RangeOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.value
+      value: 
+      objectReference: {fileID: 11400000, guid: 5daa4dbc8c4dacf4e8ab56cf7429159c, type: 2}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.value
       value: 
-      objectReference: {fileID: 11400000, guid: dd52e6990daf90f4492d3f8290621f90, type: 2}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.value
-      value: 
-      objectReference: {fileID: 11400000, guid: d7bf7d12cec187843bde9a57c8958b8d, type: 2}
+      objectReference: {fileID: 11400000, guid: 75a5963cb378e22499394fa3b9391896, type: 2}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.value
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.value
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.value
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
+      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[2].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

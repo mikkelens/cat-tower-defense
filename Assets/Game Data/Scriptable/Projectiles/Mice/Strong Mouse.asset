@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6917234c992442ae9bb44361f75c24a6, type: 3}
-  m_Name: Shuriken
+  m_Name: Strong Mouse
   m_EditorClassIdentifier: 
-  <TravelSpeed>k__BackingField: 4
-  <ColliderRadius>k__BackingField: 0.2
+  <TravelSpeed>k__BackingField: 1.75
+  <ColliderRadius>k__BackingField: 0.5
   <MaxLifetime>k__BackingField:
-    value: 2
+    value: 3
     enabled: 1
-  <MaxDamage>k__BackingField:
-    value: 6
+  <MaxTotalDamage>k__BackingField:
+    value: 1
     enabled: 1
-  <ShellDurabilityType>k__BackingField: 0
+  <ShellDurabilityType>k__BackingField: 1
   <SurfaceImpactType>k__BackingField: 1
   <MaxDamagePerCollision>k__BackingField:
     value: 2
@@ -31,15 +31,50 @@ MonoBehaviour:
   <BelowDamageStack>k__BackingField: 0
   impactAreaOfEffect:
     value:
-      <Radius>k__BackingField: 1.25
-      <MaxDamage>k__BackingField:
+      <Radius>k__BackingField: 3
+      <MaxTotalDamage>k__BackingField:
         value: 3
+        enabled: 0
+      <MaxDamagePerCollider>k__BackingField:
+        value: 5
         enabled: 1
       <ImpactType>k__BackingField: 0
       <TriggerType>k__BackingField: 2
-    enabled: 0
-  <Sprite>k__BackingField: {fileID: 263052880, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
-  <Color>k__BackingField: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+      <EffectBasePrefab>k__BackingField: {fileID: 4972604462638089654, guid: c91e75fbf9ed17f4ea884595420cf3bf, type: 3}
+      <Effect>k__BackingField:
+        <Duration>k__BackingField: 0.25
+        <Sprite>k__BackingField: {fileID: -732959043, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
+        <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+        <Size>k__BackingField: 3
+        <Curve>k__BackingField:
+          value:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0.5
+              inSlope: 3.1797433
+              outSlope: 3.1797433
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.027895857
+            - serializedVersion: 3
+              time: 1
+              value: 0
+              inSlope: -1.9046888
+              outSlope: -1.9046888
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.050212502
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          enabled: 1
+    enabled: 1
+  <Sprite>k__BackingField: {fileID: 1973369093, guid: e9bd65bd533586b4cb0df2251317d053, type: 3}
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <DeathEffect>k__BackingField:
     value:
       <Duration>k__BackingField: 0.5

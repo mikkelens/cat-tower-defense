@@ -12,6 +12,9 @@ namespace Scripts.Yarn
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 	public class CommonYarnScript : MonoBehaviour
 	{
+		[SerializeField] private float turnTime = 0.45f;
+		[SerializeField] private AnimationCurve turnCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
 		[ShowInInspector, ReadOnly] private List<Transform> _pathTargets;
 		[ShowInInspector, ReadOnly] private YarnLayer _layer;
 		[ShowInInspector, ReadOnly] private int _layerHealth;
@@ -98,13 +101,21 @@ namespace Scripts.Yarn
 		{
 			foreach (Transform pathTarget in _pathTargets)
 			{
+				float pathTargetFollowStartTime = Time.time;
+
 				Vector2 targetPos = pathTarget.position.V2FromV3();
 				Vector2 targetDir = (targetPos - transform.position.V2FromV3()).normalized;
 				Vector2 awayDir = -targetDir;
-				transform.rotation = Quaternion.FromToRotation(Vector3.up, awayDir.V3FromV2()); // look away from direction, assuming default sprite dir is down (away from up)
+
+				Quaternion pathTargetFollowStartRotation = transform.rotation;
+				Quaternion pathTargetFollowTargetRotation = Quaternion.FromToRotation(Vector3.up, awayDir.V3FromV2());
+
 				const float minDistance = 0.0001f;
 				while (Vector2.Distance(RB.position, targetPos) > minDistance)
 				{
+					float turnT = pathTargetFollowStartTime.TimeSince() / turnTime;
+					float smoothedTurnT = turnCurve.Evaluate(turnT);
+					transform.rotation = Quaternion.LerpUnclamped(pathTargetFollowStartRotation, pathTargetFollowTargetRotation, smoothedTurnT);
 					Vector2 newPos = Vector2.MoveTowards(RB.position, targetPos, Values.speed * Time.fixedDeltaTime);
 					RB.MovePosition(newPos);
 					yield return new WaitForSeconds(Time.fixedDeltaTime); // waits one frame: https://forum.unity.com/threads/coroutine-wait-x-frames-not-seconds.550168/

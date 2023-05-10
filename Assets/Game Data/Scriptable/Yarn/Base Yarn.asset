@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Base Yarn
   m_EditorClassIdentifier: 
   baseValues:
-    speed: 2
+    speed: 3
     health: 1
     damageAbsorptionCap:
       value: 1

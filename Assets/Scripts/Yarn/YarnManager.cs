@@ -6,6 +6,7 @@ using Tools.Types;
 using Tools.Utils;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
 
 namespace Scripts.Yarn
@@ -14,7 +15,7 @@ namespace Scripts.Yarn
 	{
 		[Header("Yarn Spawning")]
 		[SerializeField, Required] private Transform spawnParent;
-		[SerializeField, Required] private YarnScript yarnScriptBasePrefab;
+		[FormerlySerializedAs("yarnScriptBasePrefab")] [SerializeField, Required] private CommonYarnScript commonYarnScriptBasePrefab;
 		[SerializeField] private List<YarnSpawnEvent> spawnEvents = new List<YarnSpawnEvent>();
 		[Space]
 		[SerializeField] private List<Transform> transformPath = new List<Transform>();
@@ -43,8 +44,8 @@ namespace Scripts.Yarn
 				// spawn all the balloons for this event
 				for (int c = 0; c < spawnEvent.count; c++)
 				{
-					YarnScript spawnedYarn = Instantiate(yarnScriptBasePrefab, transformPath.First().position.WithZ(0f), Quaternion.identity, spawnParent);
-					spawnedYarn.Init(spawnEvent.yarnLayer, transformPath);
+					CommonYarnScript spawnedCommonYarn = Instantiate(commonYarnScriptBasePrefab, transformPath.First().position.WithZ(0f), Quaternion.identity, spawnParent);
+					spawnedCommonYarn.Init(spawnEvent.yarnLayer, transformPath);
 
 					// delay next spawn in event by some amount
 					if (spawnEvent.delayBetweenSpawns > 0f)

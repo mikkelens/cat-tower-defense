@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tower
+    uniqueID: 1005984707
+    locked: 0
+  - name: Yarn
+    uniqueID: 2905960187
+    locked: 0
+  - name: Effect
+    uniqueID: 2311566229
+    locked: 0
+  - name: Projectile
+    uniqueID: 409903937
+    locked: 0

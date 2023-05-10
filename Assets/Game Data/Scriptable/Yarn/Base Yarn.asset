@@ -18,8 +18,39 @@ MonoBehaviour:
     damageAbsorptionCap:
       value: 1
       enabled: 0
-    damagePassthroughType: 0
+    damagePassthroughType: 1
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: -245650337, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
-    deathSprite: {fileID: -732959043, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
-    deathTime: 1.25
+    deathEffect:
+      value:
+        <Duration>k__BackingField: 0.4
+        <Sprite>k__BackingField: {fileID: -732959043, guid: 0d6308dee9ac51d4e90769eb768e88f7, type: 3}
+        <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+        <Size>k__BackingField: 0.75
+        <Curve>k__BackingField:
+          value:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0.5
+              inSlope: 4.025446
+              outSlope: 4.025446
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.035714287
+            - serializedVersion: 3
+              time: 1
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          enabled: 1
+      enabled: 1

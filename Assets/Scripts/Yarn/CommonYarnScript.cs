@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Scripts.Player;
+using Scripts.Projectiles;
 using Sirenix.OdinInspector;
 using Tools.Utils;
 using Unity.Properties;
@@ -9,22 +10,12 @@ using UnityEngine;
 namespace Scripts.Yarn
 {
 	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-	public class YarnScript : MonoBehaviour
+	public class CommonYarnScript : MonoBehaviour
 	{
-		// [SerializeField, Required] private YarnLayer sourceLayer;
+		[ShowInInspector, ReadOnly] private List<Transform> _pathTargets;
+		[ShowInInspector, ReadOnly] private YarnLayer _layer;
+		[ShowInInspector, ReadOnly] private int _layerHealth;
 
-		// buttons for refreshing values after editing
-		[ButtonGroup("LayerUpdateButtons"), PropertyOrder(-5)]
-		[EnableIf("@_layer != null")]
-		[Button("Force Source Update")] private void ForceCurrentUpdate() => UpdateValues();
-		[ButtonGroup("LayerUpdateButtons")]
-		[EnableIf("@sourceLayer != null && _layer == null")]
-		[Button("Force Current Update")] private void ForceSourceUpdate() => UpdateValues();
-
-		private YarnLayer _layer;
-		private int _layerHealth;
-
-		[ShowInInspector, EnableIf("@_pathTargets != null")] private List<Transform> _pathTargets;
 		public void Init(YarnLayer layer, List<Transform> targets) // called by manager that spawns it
 		{
 			_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -50,14 +41,11 @@ namespace Scripts.Yarn
 			_spriteRenderer.color = Values.color;
 		}
 
-		private YarnLayer.YarnValues Values { get; set; }
+		private YarnValues Values { get; set; }
 
 		public bool CanBeDamaged => _layerHealth > 0;
-		public int Damage(int fullProjectileDamage)
+		public int Damage(int fullProjectileDamage, Projectile.TargetImpact targetImpactType)
 		{
-			// todo: remove, should not be needed bc of pre-call checks
-			// if (!CanDamage) return 0; // projectile can hit a dead thing if 2 projectiles hit it on the same physics update
-
 			int maxPossibleDamage = Mathf.Min(fullProjectileDamage, _layerHealth); // can never deal more damage than our total health
 			int layerDamage = Values.damageAbsorptionCap.Enabled ? Mathf.Min(maxPossibleDamage, Values.damageAbsorptionCap.Value) : maxPossibleDamage;
 			_layerHealth -= layerDamage;
@@ -65,13 +53,14 @@ namespace Scripts.Yarn
 				return layerDamage; // damage that was dealt at layer, which didn't kill layer
 			// layer died, more damage left
 
-			YarnLayer.DamagePassthroughType passthroughType = Values.damagePassthroughType; // will change when we kill the layer/change layer
+			YarnLayer.Surface surface = Values.surface; // will change when we kill the layer/change layer
 			bool yarnDiedCompletely = KillCurrentLayer();
-			if (yarnDiedCompletely || passthroughType != YarnLayer.DamagePassthroughType.Penetrable || !CanBeDamaged)
+			if (yarnDiedCompletely || targetImpactType == Projectile.TargetImpact.SurfaceOnly || surface == YarnLayer.Surface.Impenetrable)
 				return layerDamage; // damage that was dealt at layer, which *did* kill layer
 			// yarn alive, remaining damage should be dealt to new layer
 
-			int belowLayersDamage = Damage(fullProjectileDamage - layerDamage); // give rest (dropped damage) to below layer (recursive), receive how much was actually dealt
+			int damageLeft = fullProjectileDamage - layerDamage;
+			int belowLayersDamage = Damage(damageLeft, targetImpactType); // give rest (dropped damage) to below layer (recursive), receive how much was actually dealt
 			return layerDamage + belowLayersDamage; // damage dealt at layer (and killed it) + damage that was done below this layer
 		}
 		private bool KillCurrentLayer()
@@ -79,7 +68,8 @@ namespace Scripts.Yarn
 			switch (_layer)
 			{
 				case YarnBaseLayer:
-					Kill();
+					StopAllCoroutines(); // stops movement
+					StartCoroutine(KillYarn());
 					return true;
 				case YarnOverrideLayer overrideLayer:
 					SetNewLayer(overrideLayer.belowLayer);
@@ -92,17 +82,13 @@ namespace Scripts.Yarn
 		private SpriteRenderer _spriteRenderer;
 		private SpriteRenderer SP => _spriteRenderer ??= GetComponentInChildren<SpriteRenderer>();
 
-		private void Kill()
+		private IEnumerator KillYarn()
 		{
-			StopAllCoroutines();
-			SP.sprite = Values.deathSprite;
-			StartCoroutine(DeathRoutine());
-		}
-
-		private IEnumerator DeathRoutine()
-		{
-			yield return new WaitForSeconds(Values.deathTime);
-			Destroy(gameObject);
+			if (Values.deathEffect.Enabled)
+			{
+				yield return Values.deathEffect.Value.ApplyEffectToSpriteRenderer(SP);
+			}
+			Cull();
 		}
 
 		private Rigidbody2D RB => _rb ??= GetComponent<Rigidbody2D>();

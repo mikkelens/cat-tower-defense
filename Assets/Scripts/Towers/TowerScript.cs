@@ -52,7 +52,7 @@ namespace Scripts.Towers
 		{
 			while (true)
 			{
-				YarnScript newTarget = FindTargetInRange();
+				CommonYarnScript newTarget = FindTargetInRange();
 				if (newTarget != null)
 				{
 					SpawnProjectile(newTarget);
@@ -65,17 +65,17 @@ namespace Scripts.Towers
 			}
 		}
 
-		[CanBeNull] private YarnScript FindTargetInRange()
+		[CanBeNull] private CommonYarnScript FindTargetInRange()
 		{
 			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position.V2FromV3(), stats.Range);
 			return transform.ClosestScript(colliders
-			                               .Select(x => x.GetComponent<YarnScript>())
+			                               .Select(x => x.GetComponent<CommonYarnScript>())
 			                               .Where(x => x != null));
 		}
 
-		private void SpawnProjectile(YarnScript targetYarn)
+		private void SpawnProjectile(CommonYarnScript targetCommonYarn)
 		{
-			Vector2 targetPos = targetYarn.transform.position.V2FromV3();
+			Vector2 targetPos = targetCommonYarn.transform.position.V2FromV3();
 			Vector2 lookDir = (targetPos - transform.position.V2FromV3()).normalized;
 			transform.rotation = Quaternion.FromToRotation(Vector3.down, lookDir.V3FromV2()); // taken from yarn script follow rotation
 

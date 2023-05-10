@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace Scripts.Projectiles
 {
-	[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+	[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 	public class CommonProjectileScript : MonoBehaviour
 	{
 		private Rigidbody2D _rb;
-		private Collider2D _col;
+		private CircleCollider2D _col;
 		private SpriteRenderer _spriteRenderer;
 
 		private Projectile _projectile;
@@ -17,7 +17,7 @@ namespace Scripts.Projectiles
 		public void Init(Projectile projectile, Vector2 throwDirection) // only called once
 		{
 			_rb = GetComponent<Rigidbody2D>();
-			_col = GetComponent<Collider2D>();
+			_col = GetComponent<CircleCollider2D>();
 			_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
 			_throwDirection = throwDirection;
@@ -40,6 +40,7 @@ namespace Scripts.Projectiles
 			_projectileDamageLeft = _projectile.MaxDamage.Enabled ? _projectile.MaxDamage.Value : int.MaxValue;
 
 			_rb.velocity = _throwDirection * _projectile.TravelSpeed;
+			_col.radius = _projectile.ColliderRadius;
 			_spriteRenderer.sprite = _projectile.Sprite;
 			_spriteRenderer.color = _projectile.Color;
 		}
@@ -58,44 +59,57 @@ namespace Scripts.Projectiles
 		private void OnCollisionEnter2D(Collision2D collision)
 		{
 			if (!_projectileAlive) return;
-			YarnScript target = collision.collider.GetComponent<YarnScript>();
+			CommonYarnScript target = collision.collider.GetComponent<CommonYarnScript>();
 			if (target == null) return;
 
-			bool newProjectileSplinter;
-			do
+			if (!target.CanBeDamaged) return;
+
+			DealProjectileDamageToYarn(target);
+		}
+
+		private void DealProjectileDamageToYarn(CommonYarnScript target) // returns true if all damage absorbed
+		{
+			while (true)
 			{
-				newProjectileSplinter = false;
-				if (!target.CanBeDamaged) break;
-
-				_projectileDamageLeft -= DealProjectileDamageToYarn(target);
-
-				if (_projectile.ImpactType != Projectile.ProjectileImpactType.Fragile && _projectileDamageLeft > 0) continue;
-				if (_projectile.BelowProjectile.Enabled)
+				int damage;
+				if (!_projectile.MaxDamage.Enabled)
 				{
-					if (_projectile.BelowProjectile.Value == null) Debug.LogError($"Below Projectile of {_projectile.name} is null!");
-
-					ApplyProjectile(_projectile.BelowProjectile.Value);
-					newProjectileSplinter = true;
+					damage = int.MaxValue;
 				}
 				else
 				{
-					KillProjectile();
+					damage = Mathf.Min(_projectile.MaxDamage.Value, _projectileDamageLeft); // cap under remaining damage points
+
+					if (_projectile.ShellDurabilityType == Projectile.ShellDurability.Rigid && _projectile.MaxDamagePerCollision.Enabled) // check if rigid first bc fragility means maxdamage should be off
+					{
+						damage = Mathf.Min(damage, _projectile.MaxDamagePerCollision.Value); // cap under max damaage per hit
+					}
 				}
-			} while (newProjectileSplinter);
+
+				_projectileDamageLeft -= target.Damage(damage, _projectile.TargetImpactType);
+
+				if (_projectileDamageLeft <= 0 || _projectile.ShellDurabilityType == Projectile.ShellDurability.Fragile)
+				{
+					if (_projectile.BelowProjectile.Enabled)
+					{
+						ApplyProjectile(_projectile.BelowProjectile.Value);
+
+						if (_projectile.BelowProjectileStackType == Projectile.ProjectileStackType.CanDamageWithBoth)
+						{
+							continue;
+						}
+					}
+					else
+					{
+						StartCoroutine(KillProjectile());
+					}
+				}
+
+				break;
+			}
 		}
 
-		private int DealProjectileDamageToYarn(YarnScript target) // returns true if all damage absorbed
-		{
-			if (!_projectile.MaxDamage.Enabled) return target.Damage(int.MaxValue);
-
-			int damage = Mathf.Min(_projectile.MaxDamage.Value, _projectileDamageLeft); // cap under remaining damage points
-
-			if (_projectile.ImpactType == Projectile.ProjectileImpactType.Rigid && _projectile.MaxDamagePerCollision.Enabled)
-				damage = Mathf.Min(damage, _projectile.MaxDamagePerCollision.Value); // cap under max damaage per hit
-			return target.Damage(damage);
-		}
-
-		private void KillProjectile()
+		private IEnumerator KillProjectile()
 		{
 			_projectileAlive = false;
 
@@ -104,37 +118,11 @@ namespace Scripts.Projectiles
 
 			if (_projectile.DeathEffect.Enabled)
 			{
-				ProjectileDeathEffect deathEffect = _projectile.DeathEffect.Value;
-				_spriteRenderer.sprite = deathEffect.Sprite;
-				_spriteRenderer.color = deathEffect.Color;
-				StartCoroutine(deathEffect.Curve.Enabled
-					? AnimateDeathEffect(deathEffect)
-					: CullAfterDelay(deathEffect.Duration));
+				yield return _projectile.DeathEffect.Value.ApplyEffectToSpriteRenderer(_spriteRenderer);
 			}
-			else
-			{
-				Cull();
-			}
-		}
-
-		private IEnumerator AnimateDeathEffect(ProjectileDeathEffect deathEffect)
-		{
-			Transform spriteTransform = _spriteRenderer.transform;
-			Vector3 baseSize = deathEffect.Size.ToCubeV3();
-			float startTime = Time.time;
-			while (startTime.TimeSince() <= deathEffect.Duration)
-			{
-				float t = startTime.TimeSince() / deathEffect.Duration;
-				spriteTransform.localScale = deathEffect.Curve.Value.Evaluate(t) * baseSize;
-				yield return new WaitForSeconds(Time.deltaTime);
-			}
-		}
-
-		private IEnumerator CullAfterDelay(float delay)
-		{
-			yield return new WaitForSeconds(delay);
 			Cull();
 		}
+
 		private void Cull()
 		{
 			Destroy(gameObject);

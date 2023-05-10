@@ -1,4 +1,5 @@
-﻿using Tools.Types;
+﻿using Sirenix.OdinInspector;
+using Tools.Types;
 using UnityEngine;
 
 namespace Scripts.Yarn
@@ -6,16 +7,16 @@ namespace Scripts.Yarn
 	[CreateAssetMenu(menuName = "Scriptable/YarnBaseLayer", fileName = "New YarnBaseLayer")]
 	public class YarnBaseLayer : YarnLayer
 	{
+		[InlineProperty, HideLabel]
 		public YarnValues baseValues = new YarnValues
 		{
 			speed = 1.25f,
 			health = 1,
 			damageAbsorptionCap = new Optional<int>(1),
-			damagePassthroughType = DamagePassthroughType.Penetrable,
+			surface = Surface.Penetrable,
 			color = Color.white,
 			sprite = null,
-			deathSprite = null,
-			deathTime = 0
+			deathEffect = Effect.LinearFade(0.6f).AsDisabled()
 		};
 	}
 }

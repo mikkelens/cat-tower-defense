@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0000000095b3c78941a36e18fb6e35adc31bf63b
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -879,6 +879,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2304090100445961178, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.411
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304090100445961178, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.428
+      objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -962,7 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnParent: {fileID: 1320429647}
-  yarnScriptBasePrefab: {fileID: 7530115753290386844, guid: 2bc9b687bf95dd84eb0f9ca37e7eaeec, type: 3}
+  commonYarnScriptBasePrefab: {fileID: 7530115753290386844, guid: 2bc9b687bf95dd84eb0f9ca37e7eaeec, type: 3}
   spawnEvents:
   - eventStartDelay: 0
     yarnLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}

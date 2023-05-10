@@ -99,15 +99,16 @@ namespace Scripts.Yarn
 
 		private IEnumerator PathFollowRoutine()
 		{
+			Transform yarnTransform = transform;
 			foreach (Transform pathTarget in _pathTargets)
 			{
 				float pathTargetFollowStartTime = Time.time;
 
 				Vector2 targetPos = pathTarget.position.V2FromV3();
-				Vector2 targetDir = (targetPos - transform.position.V2FromV3()).normalized;
+				Vector2 targetDir = (targetPos - yarnTransform.position.V2FromV3()).normalized;
 				Vector2 awayDir = -targetDir;
 
-				Quaternion pathTargetFollowStartRotation = transform.rotation;
+				Quaternion pathTargetFollowStartRotation = yarnTransform.rotation;
 				Quaternion pathTargetFollowTargetRotation = Quaternion.FromToRotation(Vector3.up, awayDir.V3FromV2());
 
 				const float minDistance = 0.0001f;

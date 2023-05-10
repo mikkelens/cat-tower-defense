@@ -18,19 +18,19 @@ MonoBehaviour:
     value: 0.5
     enabled: 1
   <MaxDamage>k__BackingField:
-    value: 3
+    value: 1
     enabled: 1
-  <TargetImpactType>k__BackingField: 0
   <ShellDurabilityType>k__BackingField: 0
+  <SurfaceImpactType>k__BackingField: 1
   <MaxDamagePerCollision>k__BackingField:
     value: 1
     enabled: 1
   <BelowProjectile>k__BackingField:
     value: {fileID: 0}
     enabled: 0
-  <BelowProjectileStackType>k__BackingField: 0
+  <BelowDamageStack>k__BackingField: 0
   <Sprite>k__BackingField: {fileID: 1315270318, guid: 41d7d83e2d04e964eaa3fb430ac4cef1, type: 3}
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Color>k__BackingField: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}
   <DeathEffect>k__BackingField:
     value:
       <Duration>k__BackingField: 0.5

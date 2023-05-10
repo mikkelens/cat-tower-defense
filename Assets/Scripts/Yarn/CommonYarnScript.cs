@@ -44,7 +44,7 @@ namespace Scripts.Yarn
 		private YarnValues Values { get; set; }
 
 		public bool CanBeDamaged => _layerHealth > 0;
-		public int Damage(int fullProjectileDamage, Projectile.TargetImpact targetImpactType)
+		public int Damage(int fullProjectileDamage, Projectile.SurfaceImpact surfaceImpactType)
 		{
 			int maxPossibleDamage = Mathf.Min(fullProjectileDamage, _layerHealth); // can never deal more damage than our total health
 			int layerDamage = Values.damageAbsorptionCap.Enabled ? Mathf.Min(maxPossibleDamage, Values.damageAbsorptionCap.Value) : maxPossibleDamage;
@@ -55,12 +55,12 @@ namespace Scripts.Yarn
 
 			YarnLayer.Surface surface = Values.surface; // will change when we kill the layer/change layer
 			bool yarnDiedCompletely = KillCurrentLayer();
-			if (yarnDiedCompletely || targetImpactType == Projectile.TargetImpact.SurfaceOnly || surface == YarnLayer.Surface.Impenetrable)
+			if (yarnDiedCompletely || surfaceImpactType == Projectile.SurfaceImpact.SurfaceOnly || surface == YarnLayer.Surface.Impenetrable)
 				return layerDamage; // damage that was dealt at layer, which *did* kill layer
 			// yarn alive, remaining damage should be dealt to new layer
 
 			int damageLeft = fullProjectileDamage - layerDamage;
-			int belowLayersDamage = Damage(damageLeft, targetImpactType); // give rest (dropped damage) to below layer (recursive), receive how much was actually dealt
+			int belowLayersDamage = Damage(damageLeft, surfaceImpactType); // give rest (dropped damage) to below layer (recursive), receive how much was actually dealt
 			return layerDamage + belowLayersDamage; // damage dealt at layer (and killed it) + damage that was done below this layer
 		}
 		private bool KillCurrentLayer()

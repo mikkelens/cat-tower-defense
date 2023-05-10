@@ -1,7 +1,9 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using Tools.Types;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scripts.Projectiles
 {
@@ -27,8 +29,9 @@ namespace Scripts.Projectiles
 		[field: SerializeField] public Optional<int> MaxDamage { get; private set; } = new Optional<int>(3, true);
 
 		// durability
-		[field: ShowIf(nameof(TargetImpactShow))] // reuse
+		[field: ShowIf(nameof(SurfaceImpactShow))] // reuse
 		[field: SerializeField] public ShellDurability ShellDurabilityType { get; private set; } = ShellDurability.Rigid;
+		[Serializable]
 		public enum ShellDurability
 		{
 			Rigid, // keeps going if more damage left
@@ -36,14 +39,14 @@ namespace Scripts.Projectiles
 		}
 
 		// impact
-		[field: ShowIf(nameof(TargetImpactShow))]
-		[field: SerializeField] public TargetImpact TargetImpactType { get; private set; } = TargetImpact.SurfaceOnly;
-		private bool TargetImpactShow => !MaxDamage.Enabled || MaxDamage.Value > 1; // would never be used if maxdamage was enabled as 1
-		public enum TargetImpact
+		[field: ShowIf(nameof(SurfaceImpactShow))]
+		[field: SerializeField] public SurfaceImpact SurfaceImpactType { get; private set; } = SurfaceImpact.SurfaceOnly;
+		private bool SurfaceImpactShow => !MaxDamage.Enabled || MaxDamage.Value > 1; // would never be used if maxdamage was enabled as 1
+		[Serializable]
+		public enum SurfaceImpact
 		{
-			SurfaceOnly, // only damage outermost layer
-			[UsedImplicitly] // selectable by editor
 			Penetrating, // can damage more layers (assuming yarn hasnt disallowed it, see its surface type)
+			SurfaceOnly, // only damage outermost layer
 		}
 
 		// rigidness optional specification
@@ -64,12 +67,29 @@ namespace Scripts.Projectiles
 
 		private bool BelowProjectileStackShow => BelowProjectileShow && BelowProjectile.Enabled && BelowProjectileValidation;
 		[field: ShowIf(nameof(BelowProjectileStackShow))]
-		[field: SerializeField] public ProjectileStackType BelowProjectileStackType { get; private set; }
-		public enum ProjectileStackType
+		[field: SerializeField] public DamageStack BelowDamageStack { get; private set; }
+		[Serializable]
+		public enum DamageStack
 		{
-			CanDamageWithBoth,
 			[UsedImplicitly] // selectable by editor
 			OnlyOutermost,
+			CanDamageWithBoth,
+		}
+
+		[field: SerializeField] public Optional<AreaOfEffect> impactAreaOfEffect; // todo: implement in CommonProjectileScript
+		[Serializable, InlineProperty]
+		public class AreaOfEffect
+		{
+			[field: SerializeField] public float Radius { get; private set; } = 1.25f;
+			[field: SerializeField] public Optional<int> MaxDamage { get; private set; } = new Optional<int>(3, true);
+			[field: SerializeField] public SurfaceImpact ImpactType { get; private set; } = SurfaceImpact.Penetrating;
+			[field: SerializeField] public Trigger TriggerType {get; private set; } = Trigger.LastImpact;
+			public enum Trigger
+			{
+				FirstImpact, // first impact for this projectile layer
+				AllImpacts, // any impact
+				LastImpact, // last impact for this projectile layer
+			}
 		}
 
 		// visuals
@@ -82,6 +102,5 @@ namespace Scripts.Projectiles
 		[field: Header("Death Visuals")]
 		[field: ValidateInput(nameof(DeathEffectNullValidation), "If enabled, Death Effect should have a sprite!")]
 		[field: SerializeField] public Optional<Effect> DeathEffect { get; private set; } = Effect.LinearFade().AsDisabled();
-
 	}
 }

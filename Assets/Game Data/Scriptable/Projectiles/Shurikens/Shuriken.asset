@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6917234c992442ae9bb44361f75c24a6, type: 3}
-  m_Name: Paw
+  m_Name: Shuriken
   m_EditorClassIdentifier: 
-  <TravelSpeed>k__BackingField: 6
-  <ColliderRadius>k__BackingField: 0.3
+  <TravelSpeed>k__BackingField: 4
+  <ColliderRadius>k__BackingField: 0.2
   <MaxLifetime>k__BackingField:
-    value: 0.5
+    value: 2
     enabled: 1
   <MaxDamage>k__BackingField:
-    value: 3
+    value: 6
     enabled: 1
   <ShellDurabilityType>k__BackingField: 0
   <SurfaceImpactType>k__BackingField: 1
   <MaxDamagePerCollision>k__BackingField:
     value: 2
-    enabled: 1
+    enabled: 0
   <BelowProjectile>k__BackingField:
     value: {fileID: 0}
     enabled: 0
   <BelowDamageStack>k__BackingField: 0
-  <Sprite>k__BackingField: {fileID: 1315270318, guid: 41d7d83e2d04e964eaa3fb430ac4cef1, type: 3}
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Sprite>k__BackingField: {fileID: 263052880, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
+  <Color>k__BackingField: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
   <DeathEffect>k__BackingField:
     value:
       <Duration>k__BackingField: 0.5

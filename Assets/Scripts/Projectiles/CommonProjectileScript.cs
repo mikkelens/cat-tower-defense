@@ -86,7 +86,7 @@ namespace Scripts.Projectiles
 					}
 				}
 
-				_projectileDamageLeft -= target.Damage(damage, _projectile.TargetImpactType);
+				_projectileDamageLeft -= target.Damage(damage, _projectile.SurfaceImpactType);
 
 				if (_projectileDamageLeft <= 0 || _projectile.ShellDurabilityType == Projectile.ShellDurability.Fragile)
 				{
@@ -94,7 +94,7 @@ namespace Scripts.Projectiles
 					{
 						ApplyProjectile(_projectile.BelowProjectile.Value);
 
-						if (_projectile.BelowProjectileStackType == Projectile.ProjectileStackType.CanDamageWithBoth)
+						if (_projectile.BelowDamageStack == Projectile.DamageStack.CanDamageWithBoth)
 						{
 							continue;
 						}

@@ -935,6 +935,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scratcher
       objectReference: {fileID: 0}
+    - target: {fileID: 5698316794912575754, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698316794912575754, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698316794912575754, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

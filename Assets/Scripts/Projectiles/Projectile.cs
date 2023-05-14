@@ -2,6 +2,7 @@
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using Tools.Types;
+using Tools.Utils;
 using UnityEngine;
 
 namespace Scripts.Projectiles

@@ -36,7 +36,7 @@ namespace Scripts.Towers
 		private void OnValidate()
 		{
 			_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-			stats.AssignSpriteRenderer(_spriteRenderer);
+			stats.spriteRenderer = _spriteRenderer;
 			stats.UpdateStats();
 		}
 		#endif
@@ -69,8 +69,8 @@ namespace Scripts.Towers
 		{
 			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position.V2FromV3(), stats.Range);
 			return transform.ClosestScript(colliders
-			                               .Select(x => x.GetComponent<CommonYarnScript>())
-			                               .Where(x => x != null));
+				.Select(x => x.GetComponent<CommonYarnScript>())
+				.Where(x => x != null));
 		}
 
 		private void SpawnProjectile(CommonYarnScript targetCommonYarn)

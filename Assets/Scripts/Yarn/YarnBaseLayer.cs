@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using Tools.Types;
+using Tools.Utils;
 using UnityEngine;
 
 namespace Scripts.Yarn

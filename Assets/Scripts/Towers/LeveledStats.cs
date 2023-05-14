@@ -58,10 +58,6 @@ namespace Scripts.Towers
 			Undo.RecordObject(target, "Changed Tower Level");
 			PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 		}
-		public void AssignSpriteRenderer(SpriteRenderer renderer)
-		{
-			spriteRenderer = renderer;
-		}
 		#endif
 		#endregion </level>
 
@@ -86,7 +82,7 @@ namespace Scripts.Towers
 		[ListDrawerSettings(ShowIndexLabels = true, DefaultExpandedState = false)]
 		[field: SerializeField] public List<Upgrade> UpgradeTiers { get; private set; }
 
-		[field: SerializeField, HideInInspector] private SpriteRenderer spriteRenderer;
+		[field: SerializeField, HideInInspector] public SpriteRenderer spriteRenderer;
 
 		public void UpdateStats()
 		{

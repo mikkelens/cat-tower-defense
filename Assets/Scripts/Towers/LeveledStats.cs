@@ -50,12 +50,13 @@ namespace Scripts.Towers
 		[Button("Level++")] private void IncreaseLevel() => SetLevelInEditor(Level + 1);
 		private void SetLevelInEditor(int value)
 		{
-			EditorGUI.BeginChangeCheck();
-			Level = value;
-			if (!EditorGUI.EndChangeCheck()) return;
-
 			Object target = Selection.activeObject;
 			Undo.RecordObject(target, "Changed Tower Level");
+
+			EditorGUI.BeginChangeCheck();
+			Level = value;
+			EditorGUI.EndChangeCheck();
+
 			PrefabUtility.RecordPrefabInstancePropertyModifications(target);
 		}
 		#endif

@@ -15,7 +15,8 @@ namespace Scripts.Yarn
 			return this switch
 			{
 				YarnBaseLayer baseLayer => baseLayer.baseValues,
-				YarnOverrideLayer overrideLayer => overrideLayer.ApplyOverridesToValues(overrideLayer.belowLayer.GetLayerValuesRecursively()),
+				YarnOverrideLayer overrideLayer => overrideLayer
+					.ApplyOverridesToValues(overrideLayer.belowLayer.GetLayerValuesRecursively()),
 				_ => throw new InvalidContainerTypeException(GetType())
 			};
 		}

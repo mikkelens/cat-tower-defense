@@ -310,50 +310,6 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
---- !u!1 &431029373
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 431029375}
-  - component: {fileID: 431029374}
-  m_Layer: 0
-  m_Name: TowerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &431029374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431029373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa63389f3fb7ca459df63643614bd9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &431029375
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431029373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,37 +596,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1163658177436531550, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
-      propertyPath: stats.level
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1163658177436531550, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
-      propertyPath: stats.<BaseStats>k__BackingField.<Range>k__BackingField
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1163658177436531550, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
-      propertyPath: stats.<BaseStats>k__BackingField.<Projectile>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 4580ba36e49c9ec41bc967e5b8e3d7fe, type: 2}
-    - target: {fileID: 1163658177436531550, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<RangeOverride>k__BackingField.value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1163658177436531550, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<RangeOverride>k__BackingField.value
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1163658177436531550, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[0].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.value
-      value: 
-      objectReference: {fileID: 11400000, guid: f694b505cca0be94dbb9dc613705787d, type: 2}
-    - target: {fileID: 1163658177436531550, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
-      propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.value
-      value: 
-      objectReference: {fileID: 11400000, guid: 81096622c3405be448697418ab034d0a, type: 2}
     - target: {fileID: 3130774764343889664, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 8c8e98fa44c25744799074b9c341645d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -986,7 +914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1373,7 +1301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3130774764343889664, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_LocalPosition.x

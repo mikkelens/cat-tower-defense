@@ -18,15 +18,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Color.b
-      value: 0.059238147
+      value: 0.8537736
       objectReference: {fileID: 0}
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Color.g
-      value: 0.059238147
+      value: 0.8537736
       objectReference: {fileID: 0}
     - target: {fileID: 2499407394587851383, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_Color.r
-      value: 0.6037736
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5100729175102530685, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: m_RootOrder
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.level
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: projectilePrefab
@@ -374,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.value
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9051661121380519971, guid: a250fe363796eb7418caba382ef758c9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[1].<Overrides>k__BackingField.<ProjectileOverride>k__BackingField.enabled

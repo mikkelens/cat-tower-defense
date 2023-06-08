@@ -201,7 +201,7 @@ namespace Fancy_Tiers
 		}
 	}
 
-	public class TowerScript : MonoBehaviour
+	public class FancyTowerScript : MonoBehaviour
 	{
 		[SerializeField] private UpgradableStats stats;
 	}

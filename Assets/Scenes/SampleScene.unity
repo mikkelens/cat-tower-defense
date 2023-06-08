@@ -976,10 +976,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1163658177436531550, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
-      propertyPath: stats.<BaseStats>k__BackingField.<AttackSpeed>k__BackingField
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2304090100445961178, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.411
@@ -1042,11 +1038,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5698316794912575754, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.5896226
       objectReference: {fileID: 0}
     - target: {fileID: 5698316794912575754, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.5896226
       objectReference: {fileID: 0}
     - target: {fileID: 5698316794912575754, guid: 3c6e4f26173d19b4490c1360d35f7e02, type: 3}
       propertyPath: m_Color.r
@@ -1097,7 +1093,7 @@ MonoBehaviour:
     yarnLayer: {fileID: 11400000, guid: 6eee38868dc3a1f46943d8f087e83ebf, type: 2}
     count: 4
     delayBetweenSpawns: 0.5
-  - eventStartDelay: 3
+  - eventStartDelay: 2.5
     yarnLayer: {fileID: 11400000, guid: 6eee38868dc3a1f46943d8f087e83ebf, type: 2}
     count: 6
     delayBetweenSpawns: 0.3
@@ -1105,6 +1101,22 @@ MonoBehaviour:
     yarnLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
     count: 20
     delayBetweenSpawns: 0.2
+  - eventStartDelay: 2.5
+    yarnLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
+    count: 50
+    delayBetweenSpawns: 0.15
+  - eventStartDelay: 2.5
+    yarnLayer: {fileID: 11400000, guid: c2964887e7e29ab4da107a449086147f, type: 2}
+    count: 6
+    delayBetweenSpawns: 0.3
+  - eventStartDelay: 2.5
+    yarnLayer: {fileID: 11400000, guid: 988b8357e82574943a9763847da909b6, type: 2}
+    count: 40
+    delayBetweenSpawns: 0.175
+  - eventStartDelay: 2.5
+    yarnLayer: {fileID: 11400000, guid: c2964887e7e29ab4da107a449086147f, type: 2}
+    count: 40
+    delayBetweenSpawns: 0.175
   transformPath:
   - {fileID: 531465143}
   - {fileID: 14663732}
@@ -1352,12 +1364,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
-      propertyPath: stats.level
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1163658177436531550, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: stats.<UpgradeTiers>k__BackingField.Array.data[3].<Overrides>k__BackingField.<AttackSpeedOverride>k__BackingField.value
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3130352600553055199, guid: 41b582d10b1413b439f379f517ee4ec9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

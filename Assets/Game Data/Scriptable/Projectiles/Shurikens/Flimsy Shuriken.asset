@@ -43,8 +43,12 @@ MonoBehaviour:
       <EffectBasePrefab>k__BackingField: {fileID: 0}
       <Effect>k__BackingField:
         <Duration>k__BackingField: 0.5
-        <Sprite>k__BackingField: {fileID: 0}
-        <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+        <Sprite>k__BackingField:
+          value: {fileID: 0}
+          enabled: 0
+        <Color>k__BackingField:
+          value: {r: 1, g: 1, b: 1, a: 1}
+          enabled: 0
         <Size>k__BackingField: 1
         <Curve>k__BackingField:
           value:
@@ -72,14 +76,18 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
           enabled: 0
-    enabled: 1
+    enabled: 0
   <Sprite>k__BackingField: {fileID: 263052880, guid: 3760658921ddc0a498e9fac4ea9ebeb5, type: 3}
   <Color>k__BackingField: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
   <DeathEffect>k__BackingField:
     value:
       <Duration>k__BackingField: 0.5
-      <Sprite>k__BackingField: {fileID: 0}
-      <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+      <Sprite>k__BackingField:
+        value: {fileID: 0}
+        enabled: 0
+      <Color>k__BackingField:
+        value: {r: 1, g: 1, b: 1, a: 1}
+        enabled: 0
       <Size>k__BackingField: 1
       <Curve>k__BackingField:
         value:

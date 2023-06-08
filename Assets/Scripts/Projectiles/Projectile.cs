@@ -76,7 +76,10 @@ namespace Scripts.Projectiles
 			CanDamageWithBoth,
 		}
 
+		private bool ValidAOE => !impactAreaOfEffect.Enabled || impactAreaOfEffect.Value.EffectBasePrefab != null;
+		[field: ValidateInput(nameof(ValidAOE), "If you want this enabled, give it a prefab!")]
 		[field: SerializeField] public Optional<AreaOfEffect> impactAreaOfEffect; // todo: implement in CommonProjectileScript
+
 		[Serializable, InlineProperty]
 		public class AreaOfEffect
 		{

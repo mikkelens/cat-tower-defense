@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Scripts.Yarn;
+using Sirenix.OdinInspector;
 using Tools.Utils;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Scripts.Projectiles
 		private CircleCollider2D _col;
 		private SpriteRenderer _spriteRenderer;
 
-		private Projectile _projectile;
+		[ShowInInspector, ReadOnly] private Projectile _projectile;
 
 		public void Init(Projectile projectile, Vector2 throwDirection) // only called once
 		{
@@ -132,6 +133,8 @@ namespace Scripts.Projectiles
 			Vector3 pos = transform.position;
 
 			// spawn effect
+			Debug.Log($"Spawning area of effect from {name}", this);
+			Debug.Log($"areaOfEffect BasePrefab: {areaOfEffect.EffectBasePrefab}", areaOfEffect.EffectBasePrefab);
 			BasicEffectScript effectScript = Instantiate(areaOfEffect.EffectBasePrefab, pos, Quaternion.identity, ProjectileManager.Instance.projectileParent);
 			effectScript.Init(areaOfEffect.Effect);
 
